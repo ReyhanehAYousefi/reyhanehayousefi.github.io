@@ -1,33 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Function to check if an element is in viewport
-  function isInViewport(element) {
-    const rect = element.getBoundingClientRect()
-    return (
-      rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    )
-  }
+  const skillBars = document.querySelectorAll(".skill-progress");
+  // Ensure bars start at 0
+  skillBars.forEach((bar) => {
+    bar.style.width = "0%";
+    bar.style.transition = "width 1s ease-in-out";
+  });
 
-  // Function to animate skill bars
-  function animateSkillBars() {
-    const skillBars = document.querySelectorAll(".skill-progress")
+  // Observer to animate when in view
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const bar = entry.target;
+          const pct = bar.dataset.progress || bar.getAttribute("aria-valuenow") || 0;
+          bar.style.width = pct + "%";
+          obs.unobserve(bar);
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
 
-    skillBars.forEach((bar) => {
-      if (isInViewport(bar)) {
-        const targetWidth = bar.getAttribute("data-width")
-        bar.style.width = targetWidth
-      }
-    })
-  }
-
-  // Make animateSkillBars available globally
-  window.animateSkillBars = animateSkillBars
-
-  // Initial check with a slight delay
-  setTimeout(animateSkillBars, 500)
-
-  // Check on scroll
-  window.addEventListener("scroll", animateSkillBars)
-})
+  skillBars.forEach((bar) => observer.observe(bar));
+});
