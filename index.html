@@ -2,10 +2,486 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0;url=./out/index.html">
-  <title>Redirecting...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reyhaneh Aghayousefi | Personal Website</title>
+  <meta name="description" content="Personal portfolio website of Reyhaneh Aghayousefi, specializing in machine learning and data science.">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <p>If you are not redirected automatically, follow this <a href="./out/index.html">link</a>.</p>
+  <!-- Custom cursor -->
+  <div class="custom-cursor"></div>
+  
+  <!-- Interactive Background -->
+  <canvas id="background-canvas" class="background-canvas"></canvas>
+  
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <ul class="nav-links">
+      <li><a href="#home" class="active" data-page="home">Home</a></li>
+      <li><a href="#projects" data-page="projects">Projects</a></li>
+      <li><a href="#publications" data-page="publications">Publications</a></li>
+      <li><a href="#posts" data-page="posts">Posts</a></li>
+      <li><a href="#experience" data-page="experience">Experience</a></li>
+      <li><a href="#contact" data-page="contact">Contact</a></li>
+    </ul>
+    <div class="search-icon">
+      <div class="loader">
+        <div class="loaderMiniContainer">
+          <div class="barContainer">
+            <span class="bar"></span>
+            <span class="bar bar2"></span>
+          </div>
+          <svg class="svgIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Main Content -->
+  <main>
+    <!-- Home Section -->
+    <section id="home" class="page active">
+      <div class="profile-container">
+        <div class="profile-left">
+          <div class="profile-image">
+            <img src="images/profile.jpeg" alt="Reyhaneh Aghayousefi" width="200" height="200">
+          </div>
+          <h1 class="profile-name">Reyhaneh Aghayousefi</h1>
+          <div class="profile-links">
+            <!-- Email -->
+            <button class="Btn">
+              <div class="BG" style="background: #EA4335"></div>
+              <a href="mailto:reyhaneh.aghayousefi@aalto.fi" title="Email" class="svgContainer">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="white"/>
+                </svg>
+              </a>
+            </button>
+            
+            <!-- LinkedIn -->
+            <button class="Btn">
+              <div class="BG" style="background: #0077b5"></div>
+              <a href="https://www.linkedin.com/in/reyhaneh-aghayousefi/" target="_blank" title="LinkedIn" class="svgContainer" rel="noreferrer">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.966 0-1.75-.79-1.75-1.76s.784-1.76 1.75-1.76 1.75.79 1.75 1.76-.784 1.76-1.75 1.76zm13.5 11.27h-3v-5.6c0-1.34-.025-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-10h2.88v1.37h.04c.4-.77 1.37-1.57 2.83-1.57 3.02 0 3.58 1.99 3.58 4.58v5.62z" fill="white"/>
+                </svg>
+              </a>
+            </button>
+            
+            <!-- GitHub -->
+            <button class="Btn">
+              <div class="BG" style="background: #333"></div>
+              <a href="https://github.com/ReyhanehAYousefi" target="_blank" title="GitHub" class="svgContainer" rel="noreferrer">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 .5C5.65.5.5 5.75.5 12.24c0 5.18 3.29 9.58 7.85 11.15.57.1.78-.24.78-.54 0-.27-.01-1.13-.02-2.05-3.19.71-3.87-1.4-3.87-1.4-.52-1.35-1.28-1.71-1.28-1.71-1.05-.75.08-.74.08-.74 1.16.08 1.77 1.19 1.77 1.19 1.03 1.83 2.71 1.3 3.37.99.1-.76.41-1.3.75-1.6-2.55-.29-5.23-1.31-5.23-5.83 0-1.29.44-2.35 1.16-3.17-.12-.29-.5-1.47.11-3.07 0 0 .96-.31 3.13 1.2a10.7 10.7 0 012.85-.38c.97.01 1.95.13 2.85.38 2.17-1.51 3.13-1.2 3.13-1.2.62 1.6.24 2.78.12 3.07.73.82 1.16 1.88 1.16 3.17 0 4.53-2.68 5.53-5.23 5.82.42.36.8 1.08.8 2.18 0 1.57-.01 2.84-.01 3.23 0 .3.21.65.8.54C20.71 21.82 24 17.42 24 12.24 24 5.75 18.35.5 12 .5z" fill="white"/>
+                </svg>
+              </a>
+            </button>
+            
+            <!-- Google Scholar -->
+            <button class="Btn">
+              <div class="BG" style="background: #4285F4"></div>
+              <a href="https://scholar.google.com/citations?user=aAXtA6AAAAAJ&hl=en" target="_blank" title="Google Scholar" class="svgContainer" rel="noreferrer">
+                <div class="scholar-icon">
+                  <span>G</span>
+                </div>
+              </a>
+            </button>
+            
+            <!-- ResearchGate -->
+            <button class="Btn">
+              <div class="BG" style="background: #00CCBB"></div>
+              <a href="https://www.researchgate.net/profile/Reyhaneh-Aghayousefi" target="_blank" title="ResearchGate" class="svgContainer" rel="noreferrer">
+                <div class="researchgate-icon">
+                  <span>RG</span>
+                </div>
+              </a>
+            </button>
+          </div>
+        </div>
+        
+        <div class="profile-right">
+          <div class="profile-summary">
+            <div class="welcome-section">
+              <h1 class="welcome-title">Welcome!</h1>
+            </div>
+            <p class="bio">
+              As a Specialist at VR FleetCare, I apply my machine learning expertise to optimize the maintenance and
+              repair of railway vehicles. I have a master's degree in Electrical and Electronics Engineering from K. N.
+              Toosi University of Technology, where I conducted research on miRNA data analysis for ovarian cancer
+              recurrence prediction.
+            </p>
+          </div>
+          
+          <div class="interests-education">
+            <div class="interests">
+              <h2>Interests</h2>
+              <ul class="interests-list">
+                <li>Data Science</li>
+                <li>Natural Language Models</li>
+                <li>Computer Vision</li>
+              </ul>
+            </div>
+            
+            <div class="education">
+              <h2>Education</h2>
+              
+              <div class="edu-item">
+                <span class="edu-icon">🎓</span>
+                <div class="edu-details">
+                  <strong>Life Wide Learning in Computer Science, Present</strong>
+                  <br>
+                  <span>FITech Network University, Helsinki, Finland</span>
+                </div>
+              </div>
+              
+              <div class="edu-item">
+                <span class="edu-icon">🎓</span>
+                <div class="edu-details">
+                  <strong>M.Sc. in Electrical Engineering – Control, 2022</strong>
+                  <br>
+                  <span>K.N.Toosi University of Technology, Tehran, Iran</span>
+                </div>
+              </div>
+              
+              <div class="edu-item">
+                <span class="edu-icon">🎓</span>
+                <div class="edu-details">
+                  <strong>B.Sc. in Electrical Engineering – Control, 2019</strong>
+                  <br>
+                  <span>University of Tehran, Tehran, Iran</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="page">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-image">
+              <div class="project-placeholder">AI Project</div>
+            </div>
+            <div class="project-content">
+              <h3>AI in Healthcare</h3>
+              <p>Developed machine learning models for early detection of diseases using patient data.</p>
+              <div class="project-tags">
+                <span class="tag">Python</span>
+                <span class="tag">TensorFlow</span>
+                <span class="tag">Healthcare</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="project-card">
+            <div class="project-image">
+              <div class="project-placeholder">Signal Processing</div>
+            </div>
+            <div class="project-content">
+              <h3>EEG Signal Processing</h3>
+              <p>Created algorithms for processing and analyzing EEG signals to detect patterns.</p>
+              <div class="project-tags">
+                <span class="tag">MATLAB</span>
+                <span class="tag">Signal Processing</span>
+                <span class="tag">Neuroscience</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="project-card">
+            <div class="project-image">
+              <div class="project-placeholder">Data Visualization</div>
+            </div>
+            <div class="project-content">
+              <h3>Data Visualization Dashboard</h3>
+              <p>Built an interactive dashboard for visualizing complex datasets in the railway industry.</p>
+              <div class="project-tags">
+                <span class="tag">JavaScript</span>
+                <span class="tag">D3.js</span>
+                <span class="tag">Data Viz</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Publications Section -->
+    <section id="publications" class="page">
+      <div class="container">
+        <h2 class="section-title">Publications</h2>
+        
+        <div class="publications-list">
+          <div class="publication-card">
+            <div class="publication-year">
+              <span>2023</span>
+            </div>
+            <div class="publication-content">
+              <h3>A diagnostic miRNA panel to detect recurrence of ovarian cancer through AI approaches</h3>
+              <p class="publication-journal">Journal of Cancer Research and Clinical Oncology</p>
+              <p class="publication-abstract">
+                This study presents a novel approach to predict ovarian cancer recurrence using miRNA expression data
+                and advanced machine learning techniques.
+              </p>
+              <div class="publication-links">
+                <a href="#" class="publication-link">View Paper</a>
+                <a href="#" class="publication-link">Cite</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="publication-card">
+            <div class="publication-year">
+              <span>In Prep</span>
+            </div>
+            <div class="publication-content">
+              <h3>Coronary Artery Segmentation Using X-Ray Angiograms</h3>
+              <p class="publication-journal">In Preparation</p>
+              <p class="publication-abstract">
+                This research focuses on developing advanced image processing techniques for accurate segmentation of
+                coronary arteries from X-ray angiogram images.
+              </p>
+              <div class="publication-status">In Preparation</div>
+            </div>
+          </div>
+          
+          <div class="publication-card">
+            <div class="publication-year">
+              <span>2022</span>
+            </div>
+            <div class="publication-content">
+              <h3>Artifact Rejection from EEG Signals – A Tutorial</h3>
+              <p class="publication-journal">Technical Report</p>
+              <p class="publication-abstract">
+                A comprehensive tutorial on methods and techniques for identifying and removing artifacts from EEG
+                signal data to improve analysis accuracy.
+              </p>
+              <div class="publication-links">
+                <a href="#" class="publication-link">View Tutorial</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Posts Section -->
+    <section id="posts" class="page">
+      <div class="container">
+        <h2 class="section-title">Posts</h2>
+        
+        <div class="posts-container">
+          <p class="no-posts">No posts available yet. Check back soon!</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience" class="page">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
+        
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-date">Jun 2023 - Oct 2024</div>
+            <h3 class="timeline-title">Data Science Specialist</h3>
+            <div class="timeline-company">VR FleetCare</div>
+            <ul class="timeline-details">
+              <li>Deployed measuring devices for data collection in the railway sector.</li>
+              <li>Analyzed large datasets to detect anomalies and patterns in real-world signals.</li>
+              <li>Developed predictive maintenance models to optimize railway operations.</li>
+            </ul>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-date">Jun 2017 - Sep 2017</div>
+            <h3 class="timeline-title">Software Developer</h3>
+            <div class="timeline-company">Rayannik</div>
+            <ul class="timeline-details">
+              <li>Developed a GUI in C# for fire detection in forests using sensor data.</li>
+              <li>Worked with Arduino, Atmega8, and Altium Designer for embedded solutions.</li>
+            </ul>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-date">2020 - 2023</div>
+            <h3 class="timeline-title">Teaching Experience</h3>
+            <h4 class="timeline-subtitle">Instructor:</h4>
+            <ul class="timeline-details">
+              <li>Machine Learning for Healthcare (Fall 2023)</li>
+              <li>Introduction to Python Programming (Winter 2022)</li>
+            </ul>
+            <h4 class="timeline-subtitle">Teaching Assistant:</h4>
+            <ul class="timeline-details">
+              <li>Neural Networks Advanced Neuro-Controllers (Spring 2021)</li>
+              <li>Intelligent Systems (Fall 2020)</li>
+              <li>Advance Control (Spring 2018)</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Skills section -->
+        <div class="skills-section">
+          <h2 class="section-title">Skills</h2>
+          
+          <div class="skills-container">
+            <div class="skills-category">
+              <h3>Programming Languages</h3>
+              <div class="skills-grid">
+                <div class="skill-item">
+                  <div class="skill-header">
+                    <span class="skill-name">Python</span>
+                    <span class="skill-percentage">95%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="95%"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-header">
+                    <span class="skill-name">MATLAB</span>
+                    <span class="skill-percentage">90%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="90%"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-header">
+                    <span class="skill-name">C/C#</span>
+                    <span class="skill-percentage">75%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="75%"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-header">
+                    <span class="skill-name">JavaScript</span>
+                    <span class="skill-percentage">65%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="65%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="skills-category">
+              <h3>Machine Learning & AI</h3>
+              <div class="skills-grid">
+                <div class="skill-item">
+                  <div class="skill-header">
+                    <span class="skill-name">scikit-learn</span>
+                    <span class="skill-percentage">90%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="90%"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-header">
+                    <span class="skill-name">PyTorch</span>
+                    <span class="skill-percentage">85%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="85%"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-header">
+                    <span class="skill-name">TensorFlow</span>
+                    <span class="skill-percentage">80%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="80%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="page">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        
+        <div class="contact-container">
+          <h3 class="contact-subtitle">Send Me a Message</h3>
+          <form id="contactForm" class="contact-form">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            
+            <button type="submit" class="submit-button">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Search Modal -->
+  <div id="search-modal" class="search-modal">
+    <div class="search-modal-content">
+      <div class="search-modal-header">
+        <h2>Search</h2>
+        <button class="search-modal-close-button">&times;</button>
+      </div>
+      <div class="search-input-container">
+        <input type="text" id="searchInputModal" placeholder="Search...">
+      </div>
+      <div id="searchResultsModal" class="search-results"></div>
+    </div>
+  </div>
+  
+  <footer>
+    &copy; 2025 Reyhaneh Aghayousefi
+  </footer>
+  
+  <!-- JavaScript -->
+  <script src="js/main.js"></script>
+  <script src="js/interactive-background.js"></script>
+  <script src="js/skills-animation.js"></script>
 </body>
 </html>

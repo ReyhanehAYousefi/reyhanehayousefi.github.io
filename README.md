@@ -2,20 +2,33 @@
 
 This is my personal website hosted on GitHub Pages.
 
-## Deployment Status
+## Overview
 
-The website is deployed at: https://reyhanehayousefi.github.io/
+This website showcases my professional experience, projects, publications, and skills. It's built with HTML, CSS, and JavaScript for easy deployment on GitHub Pages.
+
+## Features
+
+- Interactive background with particle effects
+- Custom cursor with hover effects
+- Responsive design for all devices
+- Dynamic skill bars animation
+- Search functionality
+- Contact form
 
 ## Local Development
 
-\`\`\`bash
-# Install dependencies
-npm install
+To run this website locally:
 
-# Start development server
-npm run dev
-\`\`\`
+1. Clone the repository
+2. Open `index.html` in your browser
 
 ## Deployment
 
-This site is automatically deployed to GitHub Pages when changes are pushed to the main branch.
+This site is deployed at: https://reyhanehayousefi.github.io/
+
+## Technologies Used
+
+- HTML5
+- CSS3
+- JavaScript
+- GitHub Pages
