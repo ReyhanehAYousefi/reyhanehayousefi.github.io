@@ -533,7 +533,24 @@
   <script src="js/interactive-background.js"></script>
   <script src="js/skills-animation.js"></script>
   <script>
-    // ===== Mobile drawer toggle =====
+    /* ===== Show/Hide page sections ===== */
+    function showPage(pageId) {
+      // hide all pages
+      document.querySelectorAll('.page').forEach((p) => p.classList.remove('active'));
+      // show target
+      const tgt = document.getElementById(pageId);
+      if (tgt) {
+        tgt.classList.add('active');
+        // scroll to top for better UX
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      // update active link state in the top navbar
+      document
+        .querySelectorAll('.nav-links a')
+        .forEach((a) => a.classList.toggle('active', a.dataset.page === pageId));
+    }
+
+    /* ===== Mobile drawer toggle ===== */
     const menuToggle = document.querySelector('.menu-toggle');
     const drawer = document.querySelector('.side-drawer');
     const overlay = document.querySelector('.drawer-overlay');
@@ -545,10 +562,24 @@
 
     menuToggle.addEventListener('click', toggleDrawer);
     overlay.addEventListener('click', toggleDrawer);
-    // Close drawer when a link is clicked and let anchor jump do the scrolling
+
+    /* ===== Navigation link clicks ===== */
+    // Top navbar links
+    document.querySelectorAll('.nav-links a').forEach((lnk) => {
+      lnk.addEventListener('click', (e) => {
+        e.preventDefault();
+        const pageId = lnk.dataset.page;
+        showPage(pageId);
+      });
+    });
+
+    // Drawer links
     document.querySelectorAll('.drawer-links a').forEach((lnk) => {
-      lnk.addEventListener('click', () => {
-        toggleDrawer();
+      lnk.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleDrawer(); // close drawer
+        const pageId = lnk.dataset.page;
+        showPage(pageId);
       });
     });
   </script>
