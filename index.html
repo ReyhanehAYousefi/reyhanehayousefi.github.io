@@ -22,6 +22,11 @@
   
   <!-- Navigation -->
   <nav class="main-nav">
+    <button class="menu-toggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <ul class="nav-links">
       <li><a href="#home" class="active" data-page="home">Home</a></li>
       <li><a href="#projects" data-page="projects">Projects</a></li>
@@ -62,6 +67,32 @@
           </svg>
         </div>
       </div>
+    </div>
+  </nav>
+
+  <!-- Mobile side drawer and overlay -->
+  <div class="drawer-overlay"></div>
+
+  <nav class="side-drawer">
+    <ul class="drawer-links">
+      <li><a href="#home"><i class="fa-solid fa-house"></i><span>Home</span></a></li>
+      <li><a href="#projects"><i class="fa-solid fa-diagram-project"></i><span>Projects</span></a></li>
+      <li><a href="#publications"><i class="fa-solid fa-book"></i><span>Publications</span></a></li>
+      <li><a href="#posts"><i class="fa-solid fa-note-sticky"></i><span>Posts</span></a></li>
+      <li><a href="#experience"><i class="fa-solid fa-briefcase"></i><span>Experience</span></a></li>
+      <li><a href="#contact"><i class="fa-solid fa-envelope"></i><span>Contact</span></a></li>
+    </ul>
+
+    <div class="drawer-social">
+      <a href="https://github.com/ReyhanehAghayousefi" target="_blank" rel="noreferrer"><i class="fa-brands fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/reyhaneh-aghayousefi/" target="_blank" rel="noreferrer"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="https://scholar.google.com/citations?user=aAXtA6AAAAAJ&hl=en" target="_blank" rel="noreferrer"><i class="fa-brands fa-google-scholar"></i></a>
+      <a href="https://www.researchgate.net/profile/Reyhaneh-Aghayousefi" target="_blank" rel="noreferrer"><i class="fa-brands fa-researchgate"></i></a>
+    </div>
+
+    <div class="drawer-legal">
+      <a href="#terms">Terms</a>
+      <a href="#privacy">Privacy</a>
     </div>
   </nav>
   
@@ -495,9 +526,25 @@
     &copy; 2025 Reyhaneh Aghayousefi
   </footer>
   
+</footer>
+
   <!-- JavaScript -->
   <script src="js/main.js"></script>
   <script src="js/interactive-background.js"></script>
   <script src="js/skills-animation.js"></script>
+  <script>
+    // ===== Mobile drawer toggle =====
+    const menuToggle = document.querySelector('.menu-toggle');
+    const drawer = document.querySelector('.side-drawer');
+    const overlay = document.querySelector('.drawer-overlay');
+
+    function toggleDrawer() {
+      drawer.classList.toggle('open');
+      overlay.classList.toggle('show');
+    }
+
+    menuToggle.addEventListener('click', toggleDrawer);
+    overlay.addEventListener('click', toggleDrawer);
+  </script>
 </body>
 </html>
