@@ -20,6 +20,48 @@ document.addEventListener("DOMContentLoaded", () => {
     mouseY = e.clientY
   })
 
+  // Get particle color based on theme
+  function getParticleColor() {
+    const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (isDarkMode) {
+      // Lighter particles for dark mode
+      return `rgba(200, 180, 255, ${Math.random() * 0.5 + 0.2})`;
+    } else {
+      // Original purple particles for light mode
+      return `rgba(111, 58, 154, ${Math.random() * 0.5 + 0.1})`;
+    }
+  }
+
+  // Get connection color based on theme
+  function getConnectionColor(distance) {
+    const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark';
+    const opacity = 0.2 * (1 - distance / 100);
+    if (isDarkMode) {
+      // Lighter connections for dark mode
+      return `rgba(200, 180, 255, ${opacity})`;
+    } else {
+      // Original purple connections for light mode
+      return `rgba(111, 58, 154, ${opacity})`;
+    }
+  }
+
+  // Update colors when theme changes
+  function updateParticleColors() {
+    particles.forEach(particle => {
+      particle.color = getParticleColor();
+    });
+  }
+
+  // Listen for theme changes
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.attributeName === 'data-theme') {
+        updateParticleColors();
+      }
+    });
+  });
+  observer.observe(document.documentElement, { attributes: true });
+
   // Particles
   const particles = []
   const particleCount = Math.min(Math.floor((window.innerWidth * window.innerHeight) / 10000), 150)
@@ -31,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
       size: Math.random() * 2 + 0.5,
       speedX: Math.random() * 0.5 - 0.25,
       speedY: Math.random() * 0.5 - 0.25,
-      color: `rgba(111, 58, 154, ${Math.random() * 0.5 + 0.1})`,
+      color: getParticleColor(),
     })
   }
 
@@ -78,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (distance < 100) {
           ctx.beginPath()
-          ctx.strokeStyle = `rgba(111, 58, 154, ${0.2 * (1 - distance / 100)})`
+          ctx.strokeStyle = getConnectionColor(distance)
           ctx.lineWidth = 0.5
           ctx.moveTo(particle.x, particle.y)
           ctx.lineTo(otherParticle.x, otherParticle.y)

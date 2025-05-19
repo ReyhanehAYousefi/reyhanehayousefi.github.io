@@ -597,13 +597,13 @@
     // Check for saved theme preference or use browser preference
     const themeToggle = document.getElementById('theme-toggle');
     
-    // Check for saved theme preference or use browser preference
+    // Check for saved theme preference or use light mode as default
     function getPreferredTheme() {
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme) {
         return savedTheme;
       }
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      return 'light'; // Always default to light mode
     }
 
     // Apply theme
