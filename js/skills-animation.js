@@ -1,27 +1,46 @@
+// This script animates the skill progress bars
 document.addEventListener("DOMContentLoaded", () => {
-  const skillBars = document.querySelectorAll(".skill-progress");
-  // Ensure bars start at 0
-  skillBars.forEach((bar) => {
-    bar.style.width = "0%";
-    bar.style.transition = "width 1s ease-in-out";
+  // Function to check if an element is in viewport
+  function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  }
+
+  // Function to animate skill bars
+  function animateSkillBars() {
+    const skillBars = document.querySelectorAll(".skill-progress");
+    
+    skillBars.forEach((bar) => {
+      if (isInViewport(bar)) {
+        const targetWidth = bar.getAttribute("data-width") || "0%";
+        // Only animate if not already at target width
+        if (bar.style.width !== targetWidth) {
+          bar.style.width = targetWidth;
+        }
+      }
+    });
+  }
+
+  // Initial check with a small delay to ensure DOM is ready
+  setTimeout(animateSkillBars, 100);
+
+  // Check on scroll with debounce
+  let scrollTimeout;
+  window.addEventListener("scroll", () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(animateSkillBars, 100);
   });
 
-  // Observer to animate when in view
-  const observer = new IntersectionObserver(
-    (entries, obs) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const bar = entry.target;
-          const pct = bar.dataset.progress || bar.getAttribute("aria-valuenow") || 0;
-          bar.style.width = pct + "%";
-          obs.unobserve(bar);
-        }
-      });
-    },
-    { threshold: 0.3 }
-  );
-
-  skillBars.forEach((bar) => observer.observe(bar));
+  // Also check when window is resized
+  window.addEventListener("resize", () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(animateSkillBars, 100);
+  });
 
   // ===== Tooltip & Click Interaction =====
   document.querySelectorAll('.bar-container').forEach((container) => {

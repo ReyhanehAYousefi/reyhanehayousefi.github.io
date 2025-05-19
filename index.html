@@ -14,6 +14,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+  <!-- Theme Toggle Button -->
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+    <!-- Sun icon for dark mode -->
+    <i class="fa-solid fa-sun sun-icon"></i>
+    <!-- Moon icon for light mode -->
+    <i class="fa-solid fa-moon moon-icon"></i>
+  </button>
+  
   <!-- Custom cursor -->
   <div class="custom-cursor"></div>
   
@@ -581,6 +589,37 @@
         const pageId = lnk.dataset.page;
         showPage(pageId);
       });
+    });
+  </script>
+  
+  <script>
+    /* ===== Dark mode functionality ===== */
+    // Check for saved theme preference or use browser preference
+    const themeToggle = document.getElementById('theme-toggle');
+    
+    // Check for saved theme preference or use browser preference
+    function getPreferredTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        return savedTheme;
+      }
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    // Apply theme
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+    }
+
+    // Set initial theme
+    const currentTheme = getPreferredTheme();
+    applyTheme(currentTheme);
+    
+    // Toggle theme on button click
+    themeToggle.addEventListener('click', () => {
+      const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(newTheme);
     });
   </script>
 </body>

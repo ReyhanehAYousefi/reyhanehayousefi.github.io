@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
-import { Search } from "lucide-react"
+import { Search, Moon, Sun } from "lucide-react"
 import InteractiveBackground from "@/components/interactive-background"
 import DynamicTitle from "@/components/dynamic-title"
 import { motion } from "framer-motion"
@@ -14,7 +14,27 @@ export default function Home() {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
   const [cursorVariant, setCursorVariant] = useState("default")
   const [activePage, setActivePage] = useState("home")
+  const [isDarkMode, setIsDarkMode] = useState(false)
   const skillsRef = useRef<HTMLDivElement>(null)
+
+  // Initialize theme from localStorage on component mount
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme")
+    if (savedTheme === "dark") {
+      setIsDarkMode(true)
+      document.documentElement.setAttribute("data-theme", "dark")
+    } else {
+      document.documentElement.setAttribute("data-theme", "light")
+    }
+  }, [])
+
+  // Toggle theme function
+  const toggleTheme = () => {
+    const newTheme = isDarkMode ? "light" : "dark"
+    setIsDarkMode(!isDarkMode)
+    document.documentElement.setAttribute("data-theme", newTheme)
+    localStorage.setItem("theme", newTheme)
+  }
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -160,6 +180,12 @@ export default function Home() {
       {/* Interactive Background */}
       <InteractiveBackground />
 
+      {/* Theme Toggle Button */}
+      <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+        <Sun className="icon sun-icon" size={18} />
+        <Moon className="icon moon-icon" size={18} />
+      </button>
+
       {/* Custom cursor */}
       <div
         className="custom-cursor fixed rounded-full pointer-events-none z-50"
@@ -224,30 +250,30 @@ export default function Home() {
       {/* Search Modal */}
       {isSearchOpen && (
         <div className="fixed inset-0 bg-black/70 flex justify-center items-start pt-[10vh] z-50 animate-fadeIn">
-          <div className="bg-white p-8 rounded-lg w-[90%] max-w-[700px] shadow-lg animate-slideDown">
+          <div className="search-modal-content p-8 rounded-lg w-[90%] max-w-[700px] shadow-lg animate-slideDown">
             <div className="flex justify-between items-center mb-5">
-              <h2 className="text-2xl font-bold text-gray-800">Search</h2>
+              <h2 className="text-2xl font-bold">Search</h2>
               <button
-                className="text-3xl bg-gray-200 rounded-full w-9 h-9 flex items-center justify-center hover:bg-gray-300 transition-colors"
+                className="text-3xl bg-opacity-20 rounded-full w-9 h-9 flex items-center justify-center hover:bg-opacity-30 transition-colors"
                 onClick={() => setIsSearchOpen(false)}
               >
                 &times;
               </button>
             </div>
-            <div className="border-2 border-blue-600 rounded-full pl-4 mb-5">
+            <div className="search-input-container pl-4 mb-5">
               <input
                 type="text"
                 placeholder="Search..."
-                className="w-full py-4 px-2 text-lg border-none focus:outline-none bg-transparent"
+                className="w-full py-4 px-2 text-lg border-none focus:outline-none"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 autoFocus
               />
             </div>
-            <div className="max-h-[50vh] overflow-y-auto">
+            <div className="search-results max-h-[50vh] overflow-y-auto">
               {searchResults.length > 0
                 ? searchResults.map((result, index) => (
-                    <div key={index} className="py-3 px-1 border-b border-gray-200 last:border-b-0">
+                    <div key={index} className="result-item py-3 px-1 border-b last:border-b-0">
                       <h4 className="font-medium">
                         <a
                           href="#"
@@ -256,17 +282,16 @@ export default function Home() {
                             setActivePage(result.id)
                             setIsSearchOpen(false)
                           }}
-                          className="text-purple-800 hover:text-purple-950"
                         >
                           {result.title}
                         </a>
                       </h4>
                       <p
-                        className="text-gray-600 mt-1"
+                        className="mt-1"
                         dangerouslySetInnerHTML={{
                           __html: result.snippet.replace(
                             new RegExp(`(${searchQuery})`, "gi"),
-                            (match) => `<mark class="bg-purple-100/80 px-1 rounded">${match}</mark>`,
+                            (match) => `<mark>${match}</mark>`,
                           ),
                         }}
                       />
@@ -282,7 +307,7 @@ export default function Home() {
         </div>
       )}
 
-      <footer className="text-center py-4 bg-white/80 backdrop-blur-sm relative z-10">
+      <footer className="text-center py-4 relative z-10">
         &copy; 2025 Reyhaneh Aghayousefi
       </footer>
     </main>
@@ -303,7 +328,7 @@ function HomePage() {
               className="object-cover transition-transform duration-500 hover:scale-110"
             />
           </div>
-          <h1 className="text-xl font-semibold text-gray-900 mt-4 whitespace-nowrap">Reyhaneh Aghayousefi</h1>
+          <h1 className="text-xl font-semibold mt-4 whitespace-nowrap">Reyhaneh Aghayousefi</h1>
           <div className="profile-links flex gap-3 mt-1 flex-wrap items-center justify-start">
             {/* Interactive Social Media Buttons - Smaller Size */}
             <button className="Btn">
@@ -386,7 +411,7 @@ function HomePage() {
           </div>
         </div>
 
-        <div className="profile-right flex-1 flex-basis-[400px] max-w-[900px] flex flex-col gap-3 bg-white/70 backdrop-blur-sm p-6 rounded-lg shadow-sm">
+        <div className="profile-right flex-1 flex-basis-[400px] max-w-[900px] flex flex-col gap-3 bg-opacity-70 backdrop-blur-sm p-6 rounded-lg shadow-sm">
           <div className="profile-summary text-base text-gray-800 mb-3 leading-relaxed">
             <DynamicTitle />
             <motion.p
