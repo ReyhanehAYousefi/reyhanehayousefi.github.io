@@ -2,11 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactForm = document.getElementById('contactForm');
   
   if (contactForm) {
-    // Use FormSubmit (no-code solution)
-    setupFormSubmit();
-
-    // Prepare EmailJS alternative (can be enabled if preferred)
-    prepareEmailJS();
+    // Switch to EmailJS instead of FormSubmit
+    setupEmailJS();
     
     // Add animation to form elements on focus
     const formInputs = contactForm.querySelectorAll('input, textarea');
@@ -23,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Show a message when form is submitted
     contactForm.addEventListener('submit', function(e) {
-      // We don't prevent default here, let the form submit to FormSubmit
+      e.preventDefault(); // Prevent form submission - we'll handle it with EmailJS
       
       // Create submit button reference
       const submitButton = contactForm.querySelector('.submit-button');
@@ -38,12 +35,37 @@ document.addEventListener('DOMContentLoaded', () => {
       // Add particle effects to form
       createSubmitParticles();
       
-      // Create a timeout to reset button if submission takes too long
-      setTimeout(() => {
-        submitButton.disabled = false;
-        submitButton.innerHTML = '<i class="fa-solid fa-paper-plane"></i><span>Send Message</span>';
-        contactForm.classList.remove('submitting');
-      }, 5000);
+      // Get form data
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+      
+      // Prepare template parameters
+      const templateParams = {
+        from_name: name,
+        reply_to: email,
+        subject: subject,
+        message: message
+      };
+      
+      // Send email using EmailJS
+      emailjs.send('default_service', 'template_contact', templateParams)
+        .then(function(response) {
+          // Success
+          submitButton.innerHTML = '<i class="fa-solid fa-paper-plane"></i><span>Send Message</span>';
+          submitButton.disabled = false;
+          contactForm.classList.remove('submitting');
+          showFormResponse('Message sent successfully! I will get back to you soon.', true);
+          contactForm.reset();
+        }, function(error) {
+          // Error
+          submitButton.innerHTML = '<i class="fa-solid fa-paper-plane"></i><span>Send Message</span>';
+          submitButton.disabled = false;
+          contactForm.classList.remove('submitting');
+          showFormResponse('Failed to send message. Please try emailing me directly at reyhaneh.aghayousefi@aalto.fi', false);
+          console.error('EmailJS error:', error);
+        });
     });
   }
   
@@ -94,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 3500);
   }
   
-  // Function to show response message (used by redirect page)
+  // Function to show response message
   function showFormResponse(message, isSuccess) {
     // Check if response element exists, if not create it
     let responseEl = document.querySelector('.form-response');
@@ -120,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // Reset form with animation
       setTimeout(() => {
-        contactForm.reset();
+        const formInputs = contactForm.querySelectorAll('input, textarea');
         formInputs.forEach(input => {
           input.classList.add('reset-animation');
           setTimeout(() => {
@@ -165,33 +187,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   
-  // Configure form to use FormSubmit
-  function setupFormSubmit() {
-    if (contactForm) {
-      const userEmail = 'reyhaneh.aghayousefi@aalto.fi'; 
-      contactForm.action = `https://formsubmit.co/${userEmail}`;
-      contactForm.method = 'POST';
-      
-      // Add required hidden fields for FormSubmit
-      addHiddenField('_next', window.location.href + '?submitted=true'); // Redirect with success parameter
-      addHiddenField('_subject', 'New message from your website');
-      addHiddenField('_captcha', 'false');
-      
-      // Add honeypot field for spam protection
-      const honeypotField = document.createElement('input');
-      honeypotField.type = 'text';
-      honeypotField.name = '_honey';
-      honeypotField.style.display = 'none';
-      contactForm.appendChild(honeypotField);
-    }
-  }
-  
-  // Prepare EmailJS as an alternative
-  function prepareEmailJS() {
-    // This function prepares for EmailJS integration
-    // Uncomment and provide your EmailJS details to use this instead of FormSubmit
-
-    /* 
+  // Configure EmailJS
+  function setupEmailJS() {
     // Load EmailJS script if it's not already loaded
     if (!window.emailjs) {
       const script = document.createElement('script');
@@ -206,75 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function initEmailJS() {
       // Initialize EmailJS with your user ID
-      // Replace 'YOUR_USER_ID' with your actual EmailJS user ID
-      emailjs.init('YOUR_USER_ID');
-      
-      // Replace the form submission with EmailJS
-      contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const submitButton = contactForm.querySelector('.submit-button');
-        submitButton.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sending...';
-        submitButton.disabled = true;
-        
-        // Add animation to form
-        contactForm.classList.add('submitting');
-        
-        // Add particle effects to form
-        createSubmitParticles();
-        
-        // Get form data
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const subject = document.getElementById('subject').value;
-        const message = document.getElementById('message').value;
-        
-        // Prepare template parameters
-        const templateParams = {
-          name: name,
-          email: email,
-          subject: subject,
-          message: message
-        };
-        
-        // Send email using EmailJS
-        // Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual values
-        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
-          .then(function(response) {
-            // Success
-            submitButton.innerHTML = '<i class="fa-solid fa-paper-plane"></i><span>Send Message</span>';
-            submitButton.disabled = false;
-            contactForm.classList.remove('submitting');
-            showFormResponse('Message sent successfully! I will get back to you soon.', true);
-          }, function(error) {
-            // Error
-            submitButton.innerHTML = '<i class="fa-solid fa-paper-plane"></i><span>Send Message</span>';
-            submitButton.disabled = false;
-            contactForm.classList.remove('submitting');
-            showFormResponse('Failed to send message. Please try again later.', false);
-            console.error('EmailJS error:', error);
-          });
-      }, { capture: true });
+      emailjs.init('YOUR_USER_ID'); // Replace with your actual EmailJS user ID
     }
-    */
-  }
-  
-  // Helper function to add hidden fields
-  function addHiddenField(name, value) {
-    const field = document.createElement('input');
-    field.type = 'hidden';
-    field.name = name;
-    field.value = value;
-    contactForm.appendChild(field);
-  }
-  
-  // Check if the page was loaded after form submission
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.has('submitted')) {
-    // Show success message
-    showFormResponse('Message sent successfully! I will get back to you soon.', true);
-    
-    // Clean up the URL
-    window.history.replaceState({}, document.title, window.location.pathname);
   }
 }); 

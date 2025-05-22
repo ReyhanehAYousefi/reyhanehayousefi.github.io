@@ -1,0 +1,49 @@
+# EmailJS Setup Instructions for Contact Form
+
+## Step 1: Sign up for EmailJS
+1. Go to https://www.emailjs.com/ and create a free account
+2. Free tier includes 200 emails per month which should be sufficient for your personal website
+
+## Step 2: Create Email Service
+1. After logging in, click on "Email Services" in the left sidebar
+2. Click "Add New Service"
+3. Select your email provider (Gmail, Outlook, etc.)
+4. Follow the authentication steps for your email provider
+5. Name your service "default_service" (or change the name in contact-form.js)
+
+## Step 3: Create Email Template
+1. Click on "Email Templates" in the left sidebar
+2. Click "Create New Template"
+3. Name your template "template_contact" (or change the name in contact-form.js)
+4. Design your email template with the following variables:
+   - {{from_name}} - The sender's name
+   - {{reply_to}} - The sender's email for replies
+   - {{subject}} - The email subject
+   - {{message}} - The message content
+5. Example template:
+   ```
+   From: {{from_name}} <{{reply_to}}>
+   Subject: {{subject}}
+   
+   Message:
+   {{message}}
+   
+   Sent from your website contact form
+   ```
+
+## Step 4: Get Your User ID
+1. Go to "Account" → "API Keys"
+2. Copy your "Public Key"
+3. Replace 'YOUR_USER_ID' in js/contact-form.js with your Public Key
+
+## Step 5: Test the Form
+1. After making these changes, test your contact form to ensure it works properly
+2. Check your email to see if you receive the test message
+3. If you encounter any issues, check the browser console for error messages
+
+## Optional: Additional Settings
+1. Go to "Email Services" and click on your service
+2. Under "Default Reply-To", make sure it's set to "{{reply_to}}" to enable direct replies
+3. Consider setting up your Aalto email to forward to another email provider if you continue having issues with receiving emails at your university account
+
+Note: EmailJS offers direct integration without requiring server-side code, which is ideal for GitHub Pages hosting.
