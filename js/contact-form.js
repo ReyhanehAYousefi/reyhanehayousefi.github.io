@@ -41,31 +41,46 @@ document.addEventListener('DOMContentLoaded', () => {
       const subject = document.getElementById('subject').value;
       const message = document.getElementById('message').value;
       
+      // DEBUG: Log form values to verify they exist
+      console.log('Form values:', { name, email, subject, message });
+      console.log('Form elements exist:', { 
+        nameEl: document.getElementById('name') !== null,
+        emailEl: document.getElementById('email') !== null, 
+        subjectEl: document.getElementById('subject') !== null,
+        messageEl: document.getElementById('message') !== null
+      });
+      
       // Prepare template parameters to exactly match template variables
       const templateParams = {
-        name: name,           // Using "name" instead of "from_name"
+        name: name,
         message: message,
         subject: subject,
         reply_to: email
       };
-      
-      // Send email using EmailJS
-      emailjs.send('service_s5ja5pa', 'template_5ncvzin', templateParams)
-        .then(function(response) {
-          // Success
-          submitButton.innerHTML = '<i class="fa-solid fa-paper-plane"></i><span>Send Message</span>';
-          submitButton.disabled = false;
-          contactForm.classList.remove('submitting');
-          showFormResponse('Message sent successfully! I will get back to you soon.', true);
-          contactForm.reset();
-        }, function(error) {
-          // Error
-          submitButton.innerHTML = '<i class="fa-solid fa-paper-plane"></i><span>Send Message</span>';
-          submitButton.disabled = false;
-          contactForm.classList.remove('submitting');
-          showFormResponse('Failed to send message. Please try emailing me directly at reyhaneh.aghayousefi@outlook.com', false);
-          console.error('EmailJS error:', error);
-        });
+
+      // DEBUG: Log final parameters being sent
+      console.log('templateParams:', templateParams);
+
+      // Send email using EmailJS - ensure SDK is initialized
+      emailjs.init('CLRnqnXPw_2Z9K5Ma').then(() => {
+        // SDK is properly initialized, now send the email
+        emailjs.send('service_s5ja5pa', 'template_5ncvzin', templateParams)
+          .then(function(response) {
+            // Success
+            submitButton.innerHTML = '<i class="fa-solid fa-paper-plane"></i><span>Send Message</span>';
+            submitButton.disabled = false;
+            contactForm.classList.remove('submitting');
+            showFormResponse('Message sent successfully! I will get back to you soon.', true);
+            contactForm.reset();
+          }, function(error) {
+            // Error
+            submitButton.innerHTML = '<i class="fa-solid fa-paper-plane"></i><span>Send Message</span>';
+            submitButton.disabled = false;
+            contactForm.classList.remove('submitting');
+            showFormResponse('Failed to send message. Please try emailing me directly at reyhaneh.aghayousefi@outlook.com', false);
+            console.error('EmailJS error:', error);
+          });
+      });
     });
   }
   
