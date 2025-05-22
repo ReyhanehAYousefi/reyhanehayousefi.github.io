@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
+# Allow all web crawlers to access all content
 Sitemap: https://reyhanehayousefi.github.io/sitemap.xml 
