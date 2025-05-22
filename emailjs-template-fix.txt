@@ -1,0 +1,31 @@
+# Fix for EmailJS Contact Form Template
+
+Since modifying the code hasn't resolved the issue, please update your EmailJS template directly:
+
+1. Log in to EmailJS.com
+2. Go to "Email Templates" 
+3. Click on your "Contact Us" template (ID: template_7eq2f1a)
+4. Replace the current template content with this exact text:
+
+```
+Hello Reyhaneh,
+
+You got a new message from {{from_name}}:
+
+Subject: {{subject}}
+
+Message:
+{{message}}
+
+Contact Email: {{reply_to}}
+
+Best wishes,
+EmailJS team
+```
+
+5. Save the template
+6. Test your form again
+
+Important: Make sure there are no extra spaces or formatting issues in the template variables. They should be exactly as shown above.
+
+This template uses the exact variable names that are sent from your website's contact form. 
