@@ -41,12 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const subject = document.getElementById('subject').value;
       const message = document.getElementById('message').value;
       
-      // Prepare template parameters
+      // Prepare template parameters with correct variable names to match EmailJS template
       const templateParams = {
         from_name: name,
         reply_to: email,
         subject: subject,
-        message: message
+        message: message,
+        // Add these for better compatibility with EmailJS templates
+        to_name: "Reyhaneh",
+        from_email: email
       };
       
       // Send email using EmailJS
