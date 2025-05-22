@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
       dot.style.left = `${Math.random() * 100}%`;
       dot.style.top = `${Math.random() * 100}%`;
       dot.style.animationDelay = `${Math.random() * 2}s`;
-      
+
       // Add size variation
       const size = 2 + Math.random() * 3;
       dot.style.width = `${size}px`;
@@ -184,10 +184,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize and trigger animations
   function initializeAnimations() {
-    const observer = new IntersectionObserver(
+  const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
             const progressRings = entry.target.querySelectorAll('.ring-progress');
             progressRings.forEach(ring => {
               const value = ring.getAttribute('data-value');
@@ -206,12 +206,12 @@ document.addEventListener("DOMContentLoaded", () => {
             
             // Also animate the skill element 
             entry.target.classList.add('animated-in');
-          }
-        });
-      },
+        }
+      });
+    },
       { threshold: 0.2 }
-    );
-    
+  );
+
     // Observe all skill-cosmic elements
     document.querySelectorAll('.skill-cosmic').forEach((skill, index) => {
       // Add staggered animation delay

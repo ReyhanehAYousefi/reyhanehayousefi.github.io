@@ -36,51 +36,53 @@ document.addEventListener('DOMContentLoaded', () => {
       createSubmitParticles();
       
       // Get form data
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const subject = document.getElementById('subject').value;
-      const message = document.getElementById('message').value;
+      const name = document.getElementById('Name').value;
+      const email = document.getElementById('Email').value;
+      const subject = document.getElementById('Subject').value;
+      const message = document.getElementById('Message').value;
       
       // DEBUG: Log form values to verify they exist
       console.log('Form values:', { name, email, subject, message });
       console.log('Form elements exist:', { 
-        nameEl: document.getElementById('name') !== null,
-        emailEl: document.getElementById('email') !== null, 
-        subjectEl: document.getElementById('subject') !== null,
-        messageEl: document.getElementById('message') !== null
+        nameEl: document.getElementById('Name') !== null,
+        emailEl: document.getElementById('Email') !== null, 
+        subjectEl: document.getElementById('Subject') !== null,
+        messageEl: document.getElementById('Message') !== null
       });
       
       // Prepare template parameters to exactly match template variables
       const templateParams = {
-        name: name,
-        message: message,
         subject: subject,
-        reply_to: email
+        reply_to: email,
+        from_name: name,
+        message: message
       };
 
       // DEBUG: Log final parameters being sent
       console.log('templateParams:', templateParams);
 
-      // Send email using EmailJS - ensure SDK is initialized
-      emailjs.init('CLRnqnXPw_2Z9K5Ma').then(() => {
-        // SDK is properly initialized, now send the email
-        emailjs.send('service_s5ja5pa', 'template_5ncvzin', templateParams)
-          .then(function(response) {
-            // Success
-            submitButton.innerHTML = '<i class="fa-solid fa-paper-plane"></i><span>Send Message</span>';
-            submitButton.disabled = false;
-            contactForm.classList.remove('submitting');
-            showFormResponse('Message sent successfully! I will get back to you soon.', true);
-            contactForm.reset();
-          }, function(error) {
-            // Error
-            submitButton.innerHTML = '<i class="fa-solid fa-paper-plane"></i><span>Send Message</span>';
-            submitButton.disabled = false;
-            contactForm.classList.remove('submitting');
-            showFormResponse('Failed to send message. Please try emailing me directly at reyhaneh.aghayousefi@outlook.com', false);
-            console.error('EmailJS error:', error);
-          });
-      });
+      // Send email using EmailJS
+      console.log('Sending email with parameters:', templateParams);
+      console.log('Using service ID: service_s5ja5pa');
+      console.log('Using template ID: template_5ncvzin');
+      
+      emailjs.send('service_s5ja5pa', 'template_5ncvzin', templateParams)
+        .then(function(response) {
+          // Success
+          console.log('EmailJS SUCCESS!', response);
+          submitButton.innerHTML = '<i class="fa-solid fa-paper-plane"></i><span>Send Message</span>';
+          submitButton.disabled = false;
+          contactForm.classList.remove('submitting');
+          showFormResponse('Message sent successfully! I will get back to you soon.', true);
+          contactForm.reset();
+        }, function(error) {
+          // Error
+          console.error('EmailJS ERROR:', error);
+          submitButton.innerHTML = '<i class="fa-solid fa-paper-plane"></i><span>Send Message</span>';
+          submitButton.disabled = false;
+          contactForm.classList.remove('submitting');
+          showFormResponse('Failed to send message. Please try emailing me directly at reyhaneh.aghayousefi@outlook.com', false);
+        });
     });
   }
   
@@ -218,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function initEmailJS() {
       // Initialize EmailJS with your user ID
-      emailjs.init('CLRnqnXPw_2Z9K5Ma'); // Replace with your actual EmailJS user ID
+      emailjs.init('CLRnqnXPw_2Z9K5Ma');
     }
   }
 }); 

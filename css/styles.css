@@ -878,7 +878,12 @@ main {
   padding-top: 1rem;
 }
 
-.interests,
+.interests {
+  flex: 1;
+  flex-basis: 450px;
+  margin-right: 2rem;
+}
+
 .education {
   flex: 1;
   flex-basis: 300px;
@@ -1613,7 +1618,7 @@ main {
 @keyframes trailEffect {
   0% {
     opacity: 0;
-    width: 0;
+  width: 0;
     transform: rotate(var(--rotate, 0deg));
   }
   50% {
@@ -2695,4 +2700,67 @@ footer {
 
 [data-theme="dark"] .footer-seo a {
   color: var(--primary-light);
+}
+
+/* Interests section styling */
+.interests-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(180px, auto));
+  gap: 1rem;
+  margin: 1rem 0;
+  max-width: 900px;
+}
+
+.interests-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.interests-list li {
+  margin-bottom: 0.75rem;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-left: 2rem;
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+.interests-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0.5rem;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  line-height: 1;
+  top: 0;
+}
+
+.interests-list li:hover {
+  transform: translateX(5px);
+  color: var(--primary-color);
+}
+
+[data-theme="dark"] .interests-list li::before {
+  color: var(--primary-light);
+}
+
+[data-theme="dark"] .interests-list li:hover {
+  color: var(--primary-light);
+}
+
+
+
+/* Make interests section responsive */
+@media (max-width: 768px) {
+  .interests-columns {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .interests-list li:hover {
+    transform: translateX(0);
+  }
 }

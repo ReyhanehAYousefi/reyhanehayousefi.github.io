@@ -251,7 +251,7 @@
                 </div>
               </a>
             </div>
-            
+
             <!-- ResearchGate -->
             <div class="socialcontainer">
               <div class="icon social-icon-5-5">
@@ -277,21 +277,29 @@
               <h1 class="welcome-title">Welcome!</h1>
             </div>
             <p class="bio animate-on-scroll">
-              As a Specialist at VR FleetCare, I apply my machine learning expertise to optimize the maintenance and
-              repair of railway vehicles. I have a master's degree in Electrical and Electronics Engineering from K. N.
-              Toosi University of Technology, where I conducted research on miRNA data analysis for ovarian cancer
-              recurrence prediction.
+              I am an Electrical Engineer with an MSc in Automation and Control and strong expertise in machine learning and data science. I apply this to develop AI-driven solutions for challenges in healthcare and industry with focus on advanced data analysis and algorithm design.
             </p>
           </div>
           
           <div class="interests-education">
             <div class="interests">
-              <h2 class="gradient-text">Interests</h2>
-              <ul class="interests-list">
-                <li class="animate-on-scroll">Data Science</li>
-                <li class="animate-on-scroll">Natural Language Models</li>
-                <li class="animate-on-scroll">Computer Vision</li>
-              </ul>
+              <h2 class="gradient-text">Expertise & Interests</h2>
+              <div class="interests-columns">
+                <ul class="interests-list">
+                  <li class="animate-on-scroll">Data Science</li>
+                  <li class="animate-on-scroll">Machine Learning</li>
+                  <li class="animate-on-scroll">Algorithm Design</li>
+                  <li class="animate-on-scroll">AI-driven Solutions</li>
+                  <li class="animate-on-scroll">Software Development</li>
+                </ul>
+                <ul class="interests-list">
+                  <li class="animate-on-scroll">Research and Design</li>
+                  <li class="animate-on-scroll">Signal Processing</li>
+                  <li class="animate-on-scroll">Embedded Programming</li>
+                  <li class="animate-on-scroll">Natural Language Models</li>
+                  <li class="animate-on-scroll">Computer Vision</li>
+                </ul>
+              </div>
             </div>
             
             <div class="education">
@@ -523,23 +531,23 @@
           <h3 class="contact-subtitle animate-on-scroll">Send Me a Message</h3>
           <form id="contactForm" class="contact-form">
             <div class="form-group">
-              <input type="text" id="name" name="name" placeholder="Your Name" required>
-              <label for="name">Name</label>
+              <input type="text" id="Name" name="name" placeholder="Your Name" required>
+              <label for="Name">Name</label>
             </div>
             
             <div class="form-group">
-              <input type="email" id="email" name="email" placeholder="Your Email" required>
-              <label for="email">Email</label>
+              <input type="email" id="Email" name="email" placeholder="Your Email" required>
+              <label for="Email">Email</label>
             </div>
             
             <div class="form-group">
-              <input type="text" id="subject" name="subject" placeholder="Subject" required>
-              <label for="subject">Subject</label>
+              <input type="text" id="Subject" name="subject" placeholder="Subject" required>
+              <label for="Subject">Subject</label>
             </div>
             
             <div class="form-group">
-              <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
-              <label for="message">Message</label>
+              <textarea id="Message" name="message" rows="5" placeholder="Your Message" required></textarea>
+              <label for="Message">Message</label>
             </div>
             
             <button type="submit" class="submit-button">
@@ -576,7 +584,14 @@
   
   <!-- EmailJS -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  
+  <script type="text/javascript">
+    (function() {
+      // Initialize EmailJS with your public key
+      emailjs.init('CLRnqnXPw_2Z9K5Ma');
+      console.log('EmailJS initialized');
+    })();
+  </script>
+
   <!-- JavaScript -->
   <script src="js/main.js"></script>
   <script src="js/interactive-background.js"></script>
