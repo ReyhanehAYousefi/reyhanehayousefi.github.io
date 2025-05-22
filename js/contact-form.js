@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
       };
       
       // Send email using EmailJS
-      emailjs.send('default_service', 'template_contact', templateParams)
+      emailjs.send('service_s5ja5pa', 'template_contact', templateParams)
         .then(function(response) {
           // Success
           submitButton.innerHTML = '<i class="fa-solid fa-paper-plane"></i><span>Send Message</span>';
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
           submitButton.innerHTML = '<i class="fa-solid fa-paper-plane"></i><span>Send Message</span>';
           submitButton.disabled = false;
           contactForm.classList.remove('submitting');
-          showFormResponse('Failed to send message. Please try emailing me directly at reyhaneh.aghayousefi@aalto.fi', false);
+          showFormResponse('Failed to send message. Please try emailing me directly at reyhaneh.aghayousefi@outlook.com', false);
           console.error('EmailJS error:', error);
         });
     });
@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function initEmailJS() {
       // Initialize EmailJS with your user ID
-      emailjs.init('YOUR_USER_ID'); // Replace with your actual EmailJS user ID
+      emailjs.init('CLRnqnXPw_2Z9K5Ma'); // Replace with your actual EmailJS user ID
     }
   }
 }); 
