@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
       };
       
       // Send email using EmailJS
-      emailjs.send('service_s5ja5pa', 'template_contact', templateParams)
+      emailjs.send('service_s5ja5pa', 'template_7eq2f1a', templateParams)
         .then(function(response) {
           // Success
           submitButton.innerHTML = '<i class="fa-solid fa-paper-plane"></i><span>Send Message</span>';
