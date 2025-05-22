@@ -132,10 +132,55 @@ document.addEventListener('DOMContentLoaded', () => {
       }, i * 25);
     });
   }
+
+  // Typewriter Animation
+  function initTypewriter() {
+    document.querySelectorAll('.add-typewriter').forEach(element => {
+      // Store original text
+      element.dataset.originalText = element.textContent;
+      
+      // If already visible, start typing
+      if (isElementInViewport(element)) {
+        typeWriter(element);
+      } else {
+        element.textContent = '';
+      }
+    });
+  }
+
+  function typeWriter(element) {
+    if (!element.dataset.originalText) return;
+    
+    const text = element.dataset.originalText;
+    element.textContent = '';
+    let i = 0;
+    
+    function type() {
+      if (i < text.length) {
+        element.textContent += text.charAt(i);
+        i++;
+        setTimeout(type, 70); // Adjust typing speed here
+      }
+    }
+    
+    type();
+  }
+
+  // Helper function to check if element is in viewport
+  function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  }
   
   // Initialize animations
   splitTextForAnimation();
   createHeroText();
+  initTypewriter();
   
   // Add scroll reveal animations
   const observerOptions = {
@@ -147,12 +192,18 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
+        
+        // If element has typewriter class, start animation
+        if (entry.target.classList.contains('add-typewriter') && entry.target.dataset.originalText) {
+          typeWriter(entry.target);
+        }
+        
         animateOnScroll.unobserve(entry.target);
       }
     });
   }, observerOptions);
   
-  document.querySelectorAll('.animate-on-scroll').forEach(element => {
+  document.querySelectorAll('.animate-on-scroll, .add-typewriter').forEach(element => {
     animateOnScroll.observe(element);
   });
 }); 

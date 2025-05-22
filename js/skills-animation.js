@@ -3,23 +3,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Create cosmic skill visualization
   function createCosmicSkills() {
     const skillsData = [
-      { name: "Python", value: 95, category: "Programming Languages" },
-      { name: "MATLAB", value: 90, category: "Programming Languages" },
-      { name: "C/C#", value: 75, category: "Programming Languages" },
-      { name: "JavaScript", value: 65, category: "Programming Languages" },
-      { name: "scikit-learn", value: 90, category: "Machine Learning & AI" },
-      { name: "PyTorch", value: 85, category: "Machine Learning & AI" },
-      { name: "TensorFlow", value: 80, category: "Machine Learning & AI" }
+      { name: "Python", value: 95 },
+      { name: "MATLAB", value: 90 },
+      { name: "C/C#", value: 75 },
+      { name: "JavaScript", value: 65 },
+      { name: "scikit-learn", value: 90 },
+      { name: "PyTorch", value: 85 },
+      { name: "TensorFlow", value: 80 }
     ];
-
-    // Group skills by category
-    const categories = {};
-    skillsData.forEach(skill => {
-      if (!categories[skill.category]) {
-        categories[skill.category] = [];
-      }
-      categories[skill.category].push(skill);
-    });
 
     // Get the skills container
     const skillsContainer = document.querySelector('.skills-container');
@@ -28,30 +19,17 @@ document.addEventListener("DOMContentLoaded", () => {
     // Clear current content
     skillsContainer.innerHTML = '';
 
-    // Create categories and skills
-    Object.keys(categories).forEach(category => {
-      // Create category container
-      const categoryEl = document.createElement('div');
-      categoryEl.className = 'skills-category';
-      
-      // Add category title
-      const titleEl = document.createElement('h3');
-      titleEl.textContent = category;
-      categoryEl.appendChild(titleEl);
-      
-      // Create skills grid
-      const skillsGrid = document.createElement('div');
-      skillsGrid.className = 'cosmic-skills';
-      
-      // Add skills to grid
-      categories[category].forEach(skill => {
-        const skillEl = createSkillElement(skill);
-        skillsGrid.appendChild(skillEl);
-      });
-      
-      categoryEl.appendChild(skillsGrid);
-      skillsContainer.appendChild(categoryEl);
+    // Create a single skills grid without categories
+    const skillsGrid = document.createElement('div');
+    skillsGrid.className = 'cosmic-skills';
+    
+    // Add all skills to grid
+    skillsData.forEach(skill => {
+      const skillEl = createSkillElement(skill);
+      skillsGrid.appendChild(skillEl);
     });
+    
+    skillsContainer.appendChild(skillsGrid);
     
     // Initialize animations after everything is created
     initializeAnimations();

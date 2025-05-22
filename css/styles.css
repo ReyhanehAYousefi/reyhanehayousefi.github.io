@@ -91,6 +91,14 @@ body {
   opacity: 0.8;
 }
 
+/* Light mode cursor - stronger purple color */
+:root:not([data-theme="dark"]) .custom-cursor {
+  background: radial-gradient(circle at center, #6f3a9a 0%, rgba(111, 58, 154, 0.3) 50%, transparent 75%);
+  mix-blend-mode: normal;
+  opacity: 0.9;
+  box-shadow: 0 0 10px #6f3a9a;
+}
+
 .custom-cursor::before {
   content: '';
   position: absolute;
@@ -431,30 +439,8 @@ main {
   animation: gradientMove 3s ease-in-out infinite alternate;
   text-shadow: 0 0 30px var(--primary-color), 0 0 60px var(--primary-color);
   letter-spacing: 2px;
-  opacity: 0;
-  transform: scale(0.8);
-  animation: titleReveal 1.2s cubic-bezier(0.17, 0.67, 0.83, 0.67) forwards;
-}
-
-@keyframes titleReveal {
-  0% {
-    opacity: 0;
-    transform: scale(0.8) translateY(-20px);
-    filter: blur(10px);
-  }
-  60% {
-    opacity: 1;
-    transform: scale(1.1) translateY(0);
-    filter: blur(0);
-  }
-  80% {
-    transform: scale(0.95) translateY(0);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-    filter: blur(0);
-  }
+  opacity: 1;
+  transform: scale(1);
 }
 
 @keyframes gradientMove {
@@ -466,58 +452,19 @@ main {
   }
 }
 
-/* Dramatic welcome title pulse effect */
-.welcome-title::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 120%;
-  height: 120%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
-  opacity: 0;
-  z-index: -1;
-  animation: pulse 4s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.5);
-  }
-  50% {
-    opacity: 0.6;
-    transform: translate(-50%, -50%) scale(1.2);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(1.6);
-  }
-}
+/* Welcome title - removed animation */
 
 .welcome-title::after {
   content: "";
   position: absolute;
   bottom: -10px;
   left: 0;
-  width: 0;
+  width: 100%;
   height: 4px;
   background: linear-gradient(to right, transparent, var(--primary-light), transparent);
-  animation: underlineExpand 1.8s ease-out forwards 0.8s;
   box-shadow: 0 0 10px var(--primary-light);
   filter: blur(1px);
-}
-
-@keyframes underlineExpand {
-  0% {
-    width: 0;
-    opacity: 0;
-  }
-  100% {
-    width: 100%;
-    opacity: 1;
-  }
+  opacity: 1;
 }
 
 /* Hero text animation */
@@ -1016,6 +963,11 @@ main {
   color: #333;
 }
 
+.edu-icon i {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
 .edu-details {
   font-size: 0.875rem;
   color: #333;
@@ -1325,8 +1277,8 @@ main {
 /* Cosmic Skills Grid */
 .cosmic-skills {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
   position: relative;
   perspective: 1000px;
 }
@@ -1337,8 +1289,8 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
-  border-radius: 12px;
+  padding: 1rem;
+  border-radius: 10px;
   background: rgba(30, 30, 40, 0.5);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(111, 58, 154, 0.2);
@@ -1347,6 +1299,14 @@ main {
   transition: all 0.5s cubic-bezier(0.215, 0.610, 0.355, 1);
   transform-style: preserve-3d;
   overflow: visible;
+}
+
+/* Light mode version of skill-cosmic */
+:root:not([data-theme="dark"]) .skill-cosmic {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(111, 58, 154, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 
+              inset 0 0 20px rgba(111, 58, 154, 0.1);
 }
 
 .skill-cosmic:hover {
@@ -1365,7 +1325,13 @@ main {
   text-align: center;
   position: relative;
   text-shadow: 0 0 5px rgba(111, 58, 154, 0.3);
-  transition: text-shadow 0.3s ease;
+  transition: text-shadow 0.3s ease, color 0.3s ease;
+}
+
+/* Light mode skill title - darker for better contrast */
+:root:not([data-theme="dark"]) .skill-title {
+  color: var(--primary-dark);
+  text-shadow: 0 0 3px rgba(111, 58, 154, 0.15);
 }
 
 .skill-cosmic:hover .skill-title {
@@ -1375,8 +1341,8 @@ main {
 /* Skill Circle */
 .skill-circle-wrapper {
   position: relative;
-  width: 160px;
-  height: 160px;
+  width: 120px;
+  height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1399,8 +1365,8 @@ main {
 }
 
 .skill-circle-bg {
-  width: 140px;
-  height: 140px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   background-color: rgba(30, 30, 40, 0.5);
   position: absolute;
@@ -1411,6 +1377,12 @@ main {
   z-index: 1;
   transition: transform 0.5s ease, box-shadow 0.5s ease;
   overflow: hidden;
+}
+
+/* Light mode skill circle background */
+:root:not([data-theme="dark"]) .skill-circle-bg {
+  background-color: rgba(240, 230, 255, 0.7);
+  box-shadow: inset 0 0 15px rgba(111, 58, 154, 0.2);
 }
 
 .skill-cosmic:hover .skill-circle-bg {
@@ -1436,7 +1408,7 @@ main {
 }
 
 .skill-value {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: white;
   text-shadow: 0 0 10px var(--primary-color);
@@ -1464,8 +1436,8 @@ main {
 /* SVG Ring Animation */
 .skill-ring {
   position: absolute;
-  width: 160px;
-  height: 160px;
+  width: 120px;
+  height: 120px;
   z-index: 3;
   transition: transform 0.5s ease;
 }
@@ -1493,6 +1465,12 @@ main {
   transition: stroke-dashoffset 1.5s cubic-bezier(0.215, 0.610, 0.355, 1);
   filter: drop-shadow(0 0 6px var(--primary-light));
   animation: glowing-stroke 4s linear infinite alternate;
+}
+
+/* Light mode ring progress - darker purple */
+:root:not([data-theme="dark"]) .ring-progress {
+  stroke: var(--primary-dark);
+  filter: drop-shadow(0 0 6px var(--primary-dark));
 }
 
 @keyframes glowing-stroke {
@@ -1578,8 +1556,8 @@ main {
 /* Orbiting Element */
 .skill-orbit {
   position: absolute;
-  width: 170px;
-  height: 170px;
+  width: 130px;
+  height: 130px;
   border: 1px dashed rgba(111, 58, 154, 0.3);
   border-radius: 50%;
   animation: rotate 15s linear infinite;
@@ -2344,8 +2322,8 @@ footer {
   color: white;
 }
 
-[data-theme="dark"] .edu-icon {
-  color: white;
+[data-theme="dark"] .edu-icon i {
+  color: var(--primary-light);
 }
 
 [data-theme="dark"] .interests-list li {
@@ -2492,4 +2470,192 @@ footer {
 .form-group.focused label {
   color: var(--primary-light);
   text-shadow: 0 0 5px rgba(111, 58, 154, 0.3);
+}
+
+/* New modern social icons */
+.social-login-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  -webkit-box-reflect: below 1px linear-gradient(transparent, #00000030);
+  margin-top: 0.5rem;
+}
+
+.social-login-icons svg {
+  width: 28px; 
+  height: 28px;
+}
+
+.social-icon-1,
+.social-icon-1-1,
+.social-icon-2,
+.social-icon-2-2,
+.social-icon-3,
+.social-icon-3-3,
+.social-icon-4,
+.social-icon-4-4,
+.social-icon-5,
+.social-icon-5-5 {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  margin: 10px 0 0px 0;
+}
+
+.icon svg {
+  fill: var(--text-color);
+}
+
+[data-theme="dark"] .icon svg {
+  fill: #fff;
+}
+
+.socialcontainer {
+  height: 60px;
+  overflow: hidden;
+}
+
+.social-icon-1 {
+  transition-duration: 0.4s;
+  background-color: #EA4335;
+  transition-timing-function: cubic-bezier(0.46, -0.78, 0.5, 1.56);
+}
+
+.social-icon-2 {
+  transition-duration: 0.4s;
+  transition-timing-function: cubic-bezier(0.46, -0.78, 0.5, 1.56);
+  background: #0077b5;
+}
+
+.social-icon-3 {
+  transition-duration: 0.4s;
+  transition-timing-function: cubic-bezier(0.46, -0.78, 0.5, 1.56);
+  background: #333;
+}
+
+.social-icon-4 {
+  transition-duration: 0.4s;
+  transition-timing-function: cubic-bezier(0.46, -0.78, 0.5, 1.56);
+  background: #4285F4;
+}
+
+.social-icon-5 {
+  transition-duration: 0.4s;
+  transition-timing-function: cubic-bezier(0.46, -0.78, 0.5, 1.56);
+  background: #00CCBB;
+}
+
+.social-icon-1 svg,
+.social-icon-2 svg,
+.social-icon-3 svg,
+.social-icon-4 svg,
+.social-icon-5 svg {
+  opacity: 0;
+  transition-duration: 0.5s;
+  transition-delay: 0.2s;
+  fill: white;
+}
+
+.social-icon-1-1,
+.social-icon-2-2,
+.social-icon-3-3,
+.social-icon-4-4,
+.social-icon-5-5 {
+  transition-duration: 0.4s;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid var(--primary-color);
+}
+
+[data-theme="dark"] .social-icon-1-1,
+[data-theme="dark"] .social-icon-2-2,
+[data-theme="dark"] .social-icon-3-3,
+[data-theme="dark"] .social-icon-4-4,
+[data-theme="dark"] .social-icon-5-5 {
+  border: 1px solid var(--primary-light);
+}
+
+.socialcontainer:hover .social-icon-1,
+.socialcontainer:hover .social-icon-2,
+.socialcontainer:hover .social-icon-3,
+.socialcontainer:hover .social-icon-4,
+.socialcontainer:hover .social-icon-5 {
+  transform: translateY(-50px);
+}
+
+.socialcontainer:hover .social-icon-1 svg,
+.socialcontainer:hover .social-icon-2 svg,
+.socialcontainer:hover .social-icon-3 svg,
+.socialcontainer:hover .social-icon-4 svg,
+.socialcontainer:hover .social-icon-5 svg {
+  opacity: 1;
+}
+
+/* Replace old profile links with new ones */
+.profile-links {
+  margin-top: 0.5rem;
+}
+
+/* Typewriter effect styling */
+.typewriter-container {
+  position: relative;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border-left: 4px solid var(--primary-color);
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  font-family: "Courier New", monospace;
+  backdrop-filter: blur(5px);
+}
+
+.typewriter-title {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 1.2rem;
+}
+
+.typewriter-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+}
+
+.no-posts {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.blinking-cursor {
+  display: inline-block;
+  width: 10px;
+  height: 20px;
+  background-color: var(--primary-color);
+  margin-left: 5px;
+  animation: blink-cursor 1s step-end infinite;
+  vertical-align: bottom;
+}
+
+@keyframes blink-cursor {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Dark mode adjustments for typewriter */
+[data-theme="dark"] .typewriter-container {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-left: 4px solid var(--primary-light);
+}
+
+[data-theme="dark"] .typewriter-title {
+  color: var(--primary-light);
 }
