@@ -41,14 +41,33 @@ document.addEventListener('DOMContentLoaded', () => {
       const subject = document.getElementById('subject').value;
       const message = document.getElementById('message').value;
       
-      // Prepare template parameters with exact case matching to template variables
+      // Include variables in all possible formats to ensure compatibility
       const templateParams = {
+        // Original variable names from code
         from_name: name,
         message: message,
-        Subject: subject,  // Capital S to match template
+        Subject: subject,
+        
+        // Additional formats for maximum compatibility
+        name: name,
+        email: email,
+        subject: subject,
+        
+        // Camel case variations
+        fromName: name,
+        fromEmail: email,
+        messageContent: message,
+        emailSubject: subject,
+        
+        // Other common variable names
+        user_name: name,
+        user_email: email,
+        content: message,
+        title: subject,
+        
+        // Reply functionality
         reply_to: email,
         to_name: "Reyhaneh",
-        from_email: email
       };
       
       // Send email using EmailJS
