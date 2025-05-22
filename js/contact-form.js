@@ -41,13 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const subject = document.getElementById('subject').value;
       const message = document.getElementById('message').value;
       
-      // Prepare template parameters with correct variable names to match EmailJS template
+      // Prepare template parameters with exact case matching to template variables
       const templateParams = {
         from_name: name,
-        reply_to: email,
-        subject: subject,
         message: message,
-        // Add these for better compatibility with EmailJS templates
+        Subject: subject,  // Capital S to match template
+        reply_to: email,
         to_name: "Reyhaneh",
         from_email: email
       };
