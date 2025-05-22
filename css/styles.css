@@ -2025,14 +2025,35 @@ footer {
   }
   
   /* Fix text cut-off on mobile */
+  body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+  
+  .profile-container,
   .profile-right,
   .profile-summary,
   .bio,
   .interests,
   .education,
-  .page {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+  .interests-columns,
+  .page,
+  .container {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    margin-left: 0 !important;
+    box-sizing: border-box;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .interests-list li {
+    margin-left: 0;
+    padding-left: 30px;
+  }
+  
+  .interests-list li::before {
+    left: 10px;
   }
 
   .menu-toggle {
@@ -2767,11 +2788,22 @@ footer {
 /* Make interests section responsive */
 @media (max-width: 768px) {
   .interests-columns {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: 1rem;
+    width: 100%;
+    padding: 0;
   }
   
   .interests-list li:hover {
     transform: translateX(0);
+  }
+  
+  .interests {
+    width: 100%;
+    margin-right: 0;
+  }
+  
+  .welcome-title, .section-title, .gradient-text {
+    padding-left: 10px;
   }
 }
