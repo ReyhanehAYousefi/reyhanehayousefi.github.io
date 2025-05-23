@@ -936,7 +936,10 @@
     modal.style.justifyContent = 'center';
     modal.style.alignItems = 'flex-start';
     modal.style.overflowY = 'auto';
-    modal.style.padding = '2rem';
+    
+    // Responsive padding
+    const isMobile = window.innerWidth <= 768;
+    modal.style.padding = isMobile ? '1rem' : '2rem';
 
     // Hide main page cursor
     const mainCursor = document.querySelector('.custom-cursor');
@@ -947,31 +950,31 @@
     // Create container for iframe
     const container = document.createElement('div');
     container.style.width = '100%';
-    container.style.maxWidth = '1000px';
+    container.style.maxWidth = isMobile ? '100%' : '1000px';
     container.style.position = 'relative';
 
     const iframe = document.createElement('iframe');
     iframe.src = url;
     iframe.style.width = '100%';
-    iframe.style.height = '90vh';
+    iframe.style.height = isMobile ? '95vh' : '90vh';
     iframe.style.border = 'none';
-    iframe.style.borderRadius = '1rem';
+    iframe.style.borderRadius = isMobile ? '0.5rem' : '1rem';
     iframe.style.backgroundColor = 'var(--bg-color)';
 
     // Add close button
     const closeBtn = document.createElement('button');
     closeBtn.innerHTML = '×';
     closeBtn.style.position = 'absolute';
-    closeBtn.style.top = '1rem';
-    closeBtn.style.right = '1rem';
+    closeBtn.style.top = isMobile ? '0.5rem' : '1rem';
+    closeBtn.style.right = isMobile ? '0.5rem' : '1rem';
     closeBtn.style.background = 'rgba(255, 255, 255, 0.9)';
     closeBtn.style.border = '2px solid var(--primary-color)';
     closeBtn.style.color = 'var(--primary-color)';
-    closeBtn.style.fontSize = '1.5rem';
+    closeBtn.style.fontSize = isMobile ? '1.2rem' : '1.5rem';
     closeBtn.style.cursor = 'pointer';
     closeBtn.style.zIndex = '1001';
-    closeBtn.style.width = '40px';
-    closeBtn.style.height = '40px';
+    closeBtn.style.width = isMobile ? '35px' : '40px';
+    closeBtn.style.height = isMobile ? '35px' : '40px';
     closeBtn.style.borderRadius = '50%';
     closeBtn.style.display = 'flex';
     closeBtn.style.alignItems = 'center';
