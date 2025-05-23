@@ -269,6 +269,80 @@ document.addEventListener("DOMContentLoaded", () => {
   if (welcomeTitle) {
     welcomeTitle.classList.add("animate")
   }
+
+  // Read more functionality for publications
+  const readMoreToggles = document.querySelectorAll('.read-more-toggle');
+  
+  readMoreToggles.forEach(toggle => {
+    toggle.addEventListener('click', function() {
+      const publicationContent = this.closest('.publication-content');
+      const publicationDetails = publicationContent.querySelector('.publication-details');
+      
+      if (publicationDetails.classList.contains('active')) {
+        publicationDetails.classList.remove('active');
+        this.textContent = 'Read more';
+      } else {
+        publicationDetails.classList.add('active');
+        this.textContent = 'Read less';
+      }
+    });
+  });
+  
+  // Citation modal functionality
+  const citationModal = document.getElementById('citation-modal');
+  const citationCloseButton = citationModal.querySelector('.citation-modal-close-button');
+  const citeLinks = document.querySelectorAll('.cite-link');
+  const copyButton = document.getElementById('copy-citation');
+  
+  // Open citation modal
+  citeLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      citationModal.classList.add('show');
+    });
+  });
+  
+  // Close citation modal
+  citationCloseButton.addEventListener('click', function() {
+    citationModal.classList.remove('show');
+  });
+  
+  // Close on click outside
+  citationModal.addEventListener('click', function(e) {
+    if (e.target === citationModal) {
+      citationModal.classList.remove('show');
+    }
+  });
+  
+  // Close on escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && citationModal.classList.contains('show')) {
+      citationModal.classList.remove('show');
+    }
+  });
+  
+  // Copy citation text
+  copyButton.addEventListener('click', function() {
+    const citationText = document.querySelector('.citation-text').textContent;
+    
+    navigator.clipboard.writeText(citationText)
+      .then(() => {
+        const originalText = copyButton.innerHTML;
+        copyButton.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+        
+        setTimeout(() => {
+          copyButton.innerHTML = originalText;
+        }, 2000);
+      })
+      .catch(err => {
+        console.error('Failed to copy: ', err);
+        copyButton.innerHTML = '<i class="fa-solid fa-times"></i> Failed';
+        
+        setTimeout(() => {
+          copyButton.innerHTML = '<i class="fa-solid fa-copy"></i> Copy';
+        }, 2000);
+      });
+  });
 })
 
 // Function to close modal (needed for search results links)

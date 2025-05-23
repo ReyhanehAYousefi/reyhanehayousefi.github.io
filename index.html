@@ -82,6 +82,130 @@
   
   <!-- Google Site Verification -->
   <meta name="google-site-verification" content="your-verification-code">
+
+  <style>
+  /* Add these styles in the head section or in your CSS file */
+  .publication-year-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+
+  .publication-year {
+    flex: 0 0 45%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    background: none;
+    padding: 0;
+  }
+
+  .publication-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .publication-card > h3.glow-text {
+    width: 100%;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .publication-card-body {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+    min-height: 350px;
+    align-items: stretch;
+  }
+
+  .publication-year-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .publication-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .publication-content .publication-journal {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+
+  .publication-content .publication-abstract {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .publication-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .publication-link {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .publication-link:hover {
+    transform: translateY(-2px);
+    background-color: var(--primary-dark);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 767px) {
+    .publication-card-body {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .publication-year {
+      flex: 0 0 auto;
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 1rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .publication-card-body {
+      align-items: flex-start;
+    }
+  }
+
+  /* NEW rule for external link icon next to Cite button */
+  .cite-external-icon {
+    display: inline-block;
+    margin-left: 0.35em;
+    font-size: 0.9em;
+    color: inherit;
+  }
+  </style>
 </head>
 <body>
   <!-- Theme Toggle Button -->
@@ -283,7 +407,7 @@
           
           <div class="interests-education">
             <div class="interests">
-              <h2 class="gradient-text">Expertise & Interests</h2>
+              <h2 class="gradient-text expertise-heading">Expertise & Interests</h2>
               <div class="interests-columns">
                 <ul class="interests-list">
                   <li class="animate-on-scroll">Data Science</li>
@@ -397,52 +521,88 @@
         <h2 class="section-title animate-on-scroll">Publications</h2>
         
         <div class="publications-list">
+          <!-- miRNA Diagnostic Panel Paper -->
           <div class="publication-card animate-on-scroll">
-            <div class="publication-year">
-              <span>2023</span>
+            <div class="publication-image-container">
+              <img src="public/images/paper1.png" alt="miRNA diagnostic panel workflow" class="publication-image">
             </div>
             <div class="publication-content">
-              <h3 class="glow-text">A diagnostic miRNA panel to detect recurrence of ovarian cancer through AI approaches</h3>
-              <p class="publication-journal">Journal of Cancer Research and Clinical Oncology</p>
+              <h3 class="publication-title">A diagnostic miRNA panel to detect recurrence of ovarian cancer through artificial intelligence approaches</h3>
+              <p class="publication-authors">Reyhaneh Aghayousefi, Seyed Mahdi Hosseiniyan Khatibi, Sepideh Zununi Vahed, Milad Bastami, Saeed Pirmoradi, Mohammad Teshnehlab</p>
+              <div class="publication-meta">
+                <span class="publication-journal"><i class="fa-solid fa-book"></i> Journal of Cancer Research and Clinical Oncology</span>
+                <span class="publication-year"><i class="fa-solid fa-calendar"></i> 2023</span>
+              </div>
+              <p class="publication-details">Volume 149, Issue 1, Pages 325-341</p>
               <p class="publication-abstract">
-                This study presents a novel approach to predict ovarian cancer recurrence using miRNA expression data
-                and advanced machine learning techniques.
+                This study presents a novel approach to predict ovarian cancer recurrence using miRNA expression data and advanced machine learning techniques.
               </p>
-              <div class="publication-links">
-                <a href="#" class="publication-link">View Paper</a>
-                <a href="#" class="publication-link">Cite</a>
+              <div class="publication-actions">
+                <a href="paper-mirna-diagnostic-panel.html" class="publication-link read-paper" onclick="openPaperModal('paper-mirna-diagnostic-panel.html'); return false;">
+                  <i class="fa-solid fa-book-open"></i> Read Paper
+                </a>
+                <a href="https://link.springer.com/article/10.1007/s00432-022-04468-2" class="publication-link" target="_blank" rel="noreferrer">
+                  <i class="fa-solid fa-external-link-alt"></i> View on Publisher
+                </a>
+                <button class="publication-link cite-button" onclick="showCitationModal('mirna')">
+                  <i class="fa-solid fa-quote-right"></i> Cite
+                </button>
+                <a href="public/citations/aghayousefi2023diagnostic.bib" class="publication-link" download>
+                  <i class="fa-solid fa-download"></i> Download Citation
+                </a>
               </div>
             </div>
           </div>
           
+          <!-- Artifact Rejection from EEG Signals Paper -->
           <div class="publication-card animate-on-scroll">
-            <div class="publication-year">
-              <span>In Prep</span>
+            <div class="publication-image-container">
+              <img src="public/images/paper3.png" alt="EEG artifact rejection workflow" class="publication-image">
             </div>
             <div class="publication-content">
-              <h3 class="glow-text">Coronary Artery Segmentation Using X-Ray Angiograms</h3>
-              <p class="publication-journal">In Preparation</p>
+              <h3 class="publication-title">Artifact Rejection from EEG Signals–A Tutorial</h3>
+              <p class="publication-authors">Reyhaneh Aghayousefi, Mehdi Delrobaei</p>
+              <div class="publication-meta">
+                <span class="publication-journal"><i class="fa-solid fa-book"></i> Technical Report</span>
+              </div>
               <p class="publication-abstract">
-                This research focuses on developing advanced image processing techniques for accurate segmentation of
-                coronary arteries from X-ray angiogram images.
+                A comprehensive tutorial on methods and techniques for identifying and removing artifacts from EEG signal data to improve analysis accuracy.
               </p>
-              <div class="publication-status">In Preparation</div>
+              <div class="publication-actions">
+                <a href="paper-eeg-artifact-rejection.html" class="publication-link read-paper" onclick="openPaperModal('paper-eeg-artifact-rejection.html'); return false;">
+                  <i class="fa-solid fa-book-open"></i> Read Paper
+                </a>
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=aAXtA6AAAAAJ&citation_for_view=aAXtA6AAAAAJ:u-x6o8ySG0sC" class="publication-link" target="_blank" rel="noreferrer">
+                  <i class="fa-solid fa-external-link-alt"></i> View Article
+                </a>
+                <button class="publication-link cite-button" onclick="showCitationModal('eeg')">
+                  <i class="fa-solid fa-quote-right"></i> Cite
+                </button>
+                <a href="public/citations/aghayousefiartifact.bib" class="publication-link" download>
+                  <i class="fa-solid fa-download"></i> Download Citation
+                </a>
+              </div>
             </div>
           </div>
           
+          <!-- Coronary Artery Segmentation Paper -->
           <div class="publication-card animate-on-scroll">
-            <div class="publication-year">
-              <span>2022</span>
+            <div class="publication-image-container">
+              <img src="public/images/paper2.png" alt="Coronary artery segmentation" class="publication-image">
             </div>
             <div class="publication-content">
-              <h3 class="glow-text">Artifact Rejection from EEG Signals – A Tutorial</h3>
-              <p class="publication-journal">Technical Report</p>
+              <h3 class="publication-title">Coronary Artery Segmentation Using X-Ray Angiograms</h3>
+              <p class="publication-authors">In Preparation</p>
+              <div class="publication-meta">
+                <span class="publication-status"><i class="fa-solid fa-clock"></i> In Preparation</span>
+              </div>
               <p class="publication-abstract">
-                A comprehensive tutorial on methods and techniques for identifying and removing artifacts from EEG
-                signal data to improve analysis accuracy.
+                This research focuses on developing advanced image processing techniques for accurate segmentation of coronary arteries from X-ray angiogram images.
               </p>
-              <div class="publication-links">
-                <a href="#" class="publication-link">View Tutorial</a>
+              <div class="publication-actions">
+                <span class="publication-link disabled">
+                  <i class="fa-solid fa-hourglass-half"></i> Coming Soon
+                </span>
               </div>
             </div>
           </div>
@@ -560,6 +720,23 @@
     </section>
   </main>
   
+  <!-- Citation Modal -->
+  <div id="citation-modal" class="citation-modal">
+    <div class="citation-modal-content">
+      <div class="citation-modal-header">
+        <h2>Cite</h2>
+        <button class="citation-modal-close-button">&times;</button>
+      </div>
+      <div class="citation-content">
+        <pre class="citation-text" id="citation-text"></pre>
+      </div>
+      <div class="citation-actions">
+        <button id="copy-citation" class="citation-button"><i class="fa-solid fa-copy"></i> Copy</button>
+        <a id="download-citation" href="#" download class="citation-button"><i class="fa-solid fa-download"></i> Download</a>
+      </div>
+    </div>
+  </div>
+
   <!-- Search Modal -->
   <div id="search-modal" class="search-modal">
     <div class="search-modal-content">
@@ -595,6 +772,72 @@
   <script src="js/text-animations.js"></script>
   <script src="js/contact-form.js"></script>
   <script>
+    // Citations data
+    const citations = {
+      mirna: {
+        text: `Aghayousefi, R., Hosseiniyan Khatibi, S.M., Zununi Vahed, S., Bastami, M., Pirmoradi, S. and Teshnehlab, M., 2023. A diagnostic miRNA panel to detect recurrence of ovarian cancer through artificial intelligence approaches. Journal of Cancer Research and Clinical Oncology, 149(1), pp.325--341.`,
+        bibtex: `@article{aghayousefi2023diagnostic,
+  title={A diagnostic miRNA panel to detect recurrence of ovarian cancer through artificial intelligence approaches},
+  author={Aghayousefi, Reyhaneh and Hosseiniyan Khatibi, Seyed Mahdi and Zununi Vahed, Sepideh and Bastami, Milad and Pirmoradi, Saeed and Teshnehlab, Mohammad},
+  journal={Journal of Cancer Research and Clinical Oncology},
+  volume={149},
+  number={1},
+  pages={325--341},
+  year={2023},
+  publisher={Springer}
+}`,
+        downloadPath: 'public/citations/aghayousefi2023diagnostic.bib'
+      },
+      eeg: {
+        text: `Aghayousefi, R. and Delrobaei, M., Artifact Rejection from EEG Signals–A Tutorial.`,
+        bibtex: `@article{aghayousefiartifact,
+  title={Artifact Rejection from EEG Signals--A Tutorial},
+  author={Aghayousefi, Reyhaneh and Delrobaei, Mehdi}
+}`,
+        downloadPath: 'public/citations/aghayousefiartifact.bib'
+      }
+    };
+
+    // Function to show citation modal
+    function showCitationModal(paperKey) {
+      const citation = citations[paperKey];
+      if (!citation) return;
+
+      const modal = document.getElementById('citation-modal');
+      const citationText = document.getElementById('citation-text');
+      const downloadLink = document.getElementById('download-citation');
+
+      citationText.textContent = citation.bibtex;
+      downloadLink.href = citation.downloadPath;
+
+      modal.style.display = 'block';
+    }
+
+    // Citation modal functionality
+    const citationModal = document.getElementById('citation-modal');
+    const closeCitationModal = document.querySelector('.citation-modal-close-button');
+    const copyCitationBtn = document.getElementById('copy-citation');
+
+    closeCitationModal.addEventListener('click', () => {
+      citationModal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === citationModal) {
+        citationModal.style.display = 'none';
+      }
+    });
+
+    copyCitationBtn.addEventListener('click', () => {
+      const citationText = document.getElementById('citation-text').textContent;
+      navigator.clipboard.writeText(citationText).then(() => {
+        copyCitationBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+        setTimeout(() => {
+          copyCitationBtn.innerHTML = '<i class="fa-solid fa-copy"></i> Copy';
+        }, 2000);
+      });
+    });
+
     /* ===== Show/Hide page sections ===== */
     function showPage(pageId) {
       // hide all pages
@@ -675,6 +918,123 @@
       const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       applyTheme(newTheme);
     });
+  </script>
+
+  <script>
+  // Add this to your existing JavaScript
+  function openPaperModal(url) {
+    const modal = document.createElement('div');
+    modal.className = 'paper-modal';
+    modal.style.position = 'fixed';
+    modal.style.top = '0';
+    modal.style.left = '0';
+    modal.style.width = '100%';
+    modal.style.height = '100%';
+    modal.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+    modal.style.zIndex = '1000';
+    modal.style.display = 'flex';
+    modal.style.justifyContent = 'center';
+    modal.style.alignItems = 'flex-start';
+    modal.style.overflowY = 'auto';
+    modal.style.padding = '2rem';
+
+    // Hide main page cursor
+    const mainCursor = document.querySelector('.custom-cursor');
+    if (mainCursor) {
+      mainCursor.style.display = 'none';
+    }
+
+    // Create container for iframe
+    const container = document.createElement('div');
+    container.style.width = '100%';
+    container.style.maxWidth = '1000px';
+    container.style.position = 'relative';
+
+    const iframe = document.createElement('iframe');
+    iframe.src = url;
+    iframe.style.width = '100%';
+    iframe.style.height = '90vh';
+    iframe.style.border = 'none';
+    iframe.style.borderRadius = '1rem';
+    iframe.style.backgroundColor = 'var(--bg-color)';
+
+    // Add close button
+    const closeBtn = document.createElement('button');
+    closeBtn.innerHTML = '×';
+    closeBtn.style.position = 'absolute';
+    closeBtn.style.top = '1rem';
+    closeBtn.style.right = '1rem';
+    closeBtn.style.background = 'rgba(255, 255, 255, 0.9)';
+    closeBtn.style.border = '2px solid var(--primary-color)';
+    closeBtn.style.color = 'var(--primary-color)';
+    closeBtn.style.fontSize = '1.5rem';
+    closeBtn.style.cursor = 'pointer';
+    closeBtn.style.zIndex = '1001';
+    closeBtn.style.width = '40px';
+    closeBtn.style.height = '40px';
+    closeBtn.style.borderRadius = '50%';
+    closeBtn.style.display = 'flex';
+    closeBtn.style.alignItems = 'center';
+    closeBtn.style.justifyContent = 'center';
+    closeBtn.style.fontWeight = 'bold';
+    closeBtn.style.transition = 'all 0.3s ease';
+    
+    // Add hover effect
+    closeBtn.addEventListener('mouseenter', () => {
+      closeBtn.style.background = 'var(--primary-color)';
+      closeBtn.style.color = 'white';
+      closeBtn.style.transform = 'scale(1.1)';
+    });
+    
+    closeBtn.addEventListener('mouseleave', () => {
+      closeBtn.style.background = 'rgba(255, 255, 255, 0.9)';
+      closeBtn.style.color = 'var(--primary-color)';
+      closeBtn.style.transform = 'scale(1)';
+    });
+    
+    closeBtn.onclick = () => {
+      // Show main page cursor again
+      if (mainCursor) {
+        mainCursor.style.display = 'block';
+      }
+      document.body.removeChild(modal);
+    };
+
+    container.appendChild(iframe);
+    container.appendChild(closeBtn);
+    modal.appendChild(container);
+    document.body.appendChild(modal);
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        // Show main page cursor again
+        if (mainCursor) {
+          mainCursor.style.display = 'block';
+        }
+        document.body.removeChild(modal);
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && document.body.contains(modal)) {
+        // Show main page cursor again
+        if (mainCursor) {
+          mainCursor.style.display = 'block';
+        }
+        document.body.removeChild(modal);
+      }
+    });
+  }
+
+  // Update the publication links to use the modal
+  document.querySelectorAll('.publication-link').forEach(link => {
+    if (link.textContent.trim() === 'Read More') {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        openPaperModal(link.href);
+      });
+    }
+  });
   </script>
 </body>
 </html>
