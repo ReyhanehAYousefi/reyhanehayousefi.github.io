@@ -3432,3 +3432,131 @@ footer {
   border-radius: 0.25rem;
   transition: background-color 0.3s, color 0.3s;
 }
+
+/* Project description toggle styling */
+.project-description {
+  margin-bottom: 1rem;
+}
+
+.description-short,
+.description-full {
+  color: var(--text-color);
+  line-height: 1.6;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+.read-more-btn {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.25rem 0;
+  margin-top: 0.5rem;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+  font-family: var(--font-body);
+}
+
+.read-more-btn:hover {
+  color: var(--primary-dark);
+}
+
+.read-more-btn:focus {
+  outline: none;
+  color: var(--primary-dark);
+}
+
+[data-theme="dark"] .read-more-btn {
+  color: var(--primary-light);
+}
+
+[data-theme="dark"] .read-more-btn:hover {
+  color: var(--primary-color);
+}
+
+/* Special styling for first publication with title beside image */
+.publication-card.first-publication {
+  flex-direction: column;
+}
+
+.publication-card.first-publication .publication-header {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.publication-card.first-publication .publication-image-container {
+  flex-shrink: 0;
+  width: 400px;
+  max-width: 50%;
+}
+
+.publication-card.first-publication .publication-title-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-height: 200px;
+}
+
+.publication-card.first-publication .publication-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  line-height: 1.3;
+  margin: 0 0 0.5rem 0;
+}
+
+.publication-card.first-publication .publication-authors {
+  font-size: 0.95rem;
+  color: var(--text-color);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.publication-card.first-publication .publication-content {
+  padding-top: 0;
+}
+
+.publication-card.first-publication .publication-meta {
+  margin-bottom: 0.375rem;
+}
+
+.publication-card.first-publication .publication-details {
+  margin-bottom: 0.75rem;
+}
+
+.publication-card.first-publication .publication-abstract {
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .publication-card.first-publication .publication-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .publication-card.first-publication .publication-image-container {
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 1rem;
+  }
+  
+  .publication-card.first-publication .publication-title-container {
+    min-height: auto;
+  }
+  
+  .publication-card.first-publication .publication-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .publication-card.first-publication .publication-authors {
+    font-size: 0.9rem;
+  }
+}

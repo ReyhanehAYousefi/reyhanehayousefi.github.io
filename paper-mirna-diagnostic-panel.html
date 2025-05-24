@@ -146,16 +146,15 @@
     
     .paper-image {
       width: 100%;
-      max-height: 300px;
+      height: auto;
       margin-bottom: 2rem;
-      overflow: hidden;
       border-radius: 0.5rem;
     }
     
     .paper-image img {
       width: 100%;
       height: auto;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
     }
     
@@ -246,6 +245,10 @@
       color: var(--primary-light);
     }
     
+    [data-theme="dark"] .paper-journal a {
+      color: #60a5fa;
+    }
+    
     [data-theme="dark"] .paper-section-title {
       color: var(--primary-light);
     }
@@ -293,16 +296,14 @@
     
     .paper-image {
       width: 100%;
-      max-height: 400px;
-      margin: 2rem 0;
-      overflow: hidden;
+      height: auto;
+      margin-bottom: 2rem;
       border-radius: 0.5rem;
-      background-color: var(--primary-color);
     }
     
     .paper-image img {
       width: 100%;
-      height: 100%;
+      height: auto;
       object-fit: contain;
       display: block;
     }
@@ -450,7 +451,7 @@
       <h1 class="paper-title">A diagnostic miRNA panel to detect recurrence of ovarian cancer through artificial intelligence approaches</h1>
       
       <p class="paper-authors">
-        Reyhaneh Aghayousefi, Seyed Mahdi Hosseiniyan Khatibi, Sepideh Zununi Vahed, Milad Bastami, Saeed Pirmoradi, Mohammad Teshnehlab
+        <strong>Reyhaneh Aghayousefi</strong>, Seyed Mahdi Hosseiniyan Khatibi, Sepideh Zununi Vahed, Milad Bastami, Saeed Pirmoradi, Mohammad Teshnehlab
       </p>
       
       <p class="paper-journal">
@@ -481,10 +482,6 @@
       <div class="paper-links">
         <a href="https://link.springer.com/article/10.1007/s00432-022-04468-2" target="_blank" rel="noreferrer" class="paper-link">
           <i class="fa-solid fa-external-link-alt"></i> View on Springer
-        </a>
-        
-        <a href="https://link.springer.com/article/10.1007/s00432-022-04468-2" target="_blank" rel="noreferrer" class="paper-link">
-          <i class="fa-solid fa-link"></i> DOI: 10.1007/s00432-022-04468-2
         </a>
       </div>
     </div>
@@ -532,10 +529,6 @@
       </div>
     </div>
   </div>
-  
-  <footer>
-    &copy; 2025 Reyhaneh Aghayousefi
-  </footer>
   
   <!-- JavaScript -->
   <script src="js/interactive-background.js"></script>

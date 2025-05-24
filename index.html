@@ -473,7 +473,11 @@
             </div>
             <div class="project-content">
               <h3 class="glow-text">Multilingual Toxicity Detection</h3>
-              <p>This project developed a multilingual toxicity detection system for Finnish and German using data augmentation via machine translation and multilingual transfer learning with XLM-RoBERTa, significantly improving performance on low-resource languages. The approach integrated diverse datasets and majority voting, achieving a top ranking in a multilingual toxicity detection competition.</p>
+              <div class="project-description">
+                <p class="description-short">This project developed a multilingual toxicity detection system for Finnish and German using data augmentation via machine translation and multilingual transfer learning with XLM-RoBERTa.</p>
+                <p class="description-full" style="display: none;">This project developed a multilingual toxicity detection system for Finnish and German using data augmentation via machine translation and multilingual transfer learning with XLM-RoBERTa, significantly improving performance on low-resource languages. The approach integrated diverse datasets and majority voting, achieving a top ranking in a multilingual toxicity detection competition.</p>
+                <button class="read-more-btn" onclick="toggleDescription(this)">Read more</button>
+              </div>
               <div class="project-tags">
                 <span class="tag">NLP</span>
                 <span class="tag">Machine Translation</span>
@@ -495,7 +499,11 @@
             </div>
             <div class="project-content">
               <h3 class="glow-text">Human Activity Visualization via Joint-Based Skeleton Tracking</h3>
-              <p>This project visualizes human pose estimation by synchronizing original video with both 2D and 3D skeletal joint tracking and enables intuitive analysis of complex movement patterns. By integrating MediaPipe's advanced joint detection, it offers a comprehensive side-by-side comparison of motion from multiple perspectives.</p>
+              <div class="project-description">
+                <p class="description-short">This project visualizes human pose estimation by synchronizing original video with both 2D and 3D skeletal joint tracking and enables intuitive analysis of complex movement patterns.</p>
+                <p class="description-full" style="display: none;">This project visualizes human pose estimation by synchronizing original video with both 2D and 3D skeletal joint tracking and enables intuitive analysis of complex movement patterns. By integrating MediaPipe's advanced joint detection, it offers a comprehensive side-by-side comparison of motion from multiple perspectives.</p>
+                <button class="read-more-btn" onclick="toggleDescription(this)">Read more</button>
+              </div>
               <div class="project-tags">
                 <span class="tag">MediaPipe</span>
                 <span class="tag">Computer Vision</span>
@@ -512,13 +520,38 @@
             </div>
             <div class="project-content">
               <h3 class="glow-text">Automatic Speech Recognition for Gibberish EsperantO</h3>
-              <p>This project investigates automatic speech recognition for Gibberish EsperantO (an Esperanto variant with systematic character substitutions) using wav2vec2 models implemented via the Hugging Face Transformers library. By fine-tuning multilingual and Esperanto-specific wav2vec2 architectures, the study demonstrates the effectiveness and limitations of self-supervised deep learning for robust ASR in heavily distorted transcription scenarios.</p>
+              <div class="project-description">
+                <p class="description-short">This project investigates automatic speech recognition for Gibberish EsperantO using wav2vec2 models implemented via the Hugging Face Transformers library.</p>
+                <p class="description-full" style="display: none;">This project investigates automatic speech recognition for Gibberish EsperantO (an Esperanto variant with systematic character substitutions) using wav2vec2 models implemented via the Hugging Face Transformers library. By fine-tuning multilingual and Esperanto-specific wav2vec2 architectures, the study demonstrates the effectiveness and limitations of self-supervised deep learning for robust ASR in heavily distorted transcription scenarios.</p>
+                <button class="read-more-btn" onclick="toggleDescription(this)">Read more</button>
+              </div>
               <div class="project-tags">
                 <span class="tag">ASR</span>
                 <span class="tag">Wav2Vec2.0</span>
                 <span class="tag">Language Models</span>
                 <span class="tag">CNN-LSTM</span>
                 <span class="tag">Robustness</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="project-card animate-on-scroll">
+            <div class="project-image">
+              <img src="public/images/coronary_vessel.png" alt="Coronary Artery Segmentation Using X-Ray Angiograms Project">
+            </div>
+            <div class="project-content">
+              <h3 class="glow-text">Coronary Artery Segmentation Using X-Ray Angiograms</h3>
+              <div class="project-description">
+                <p class="description-short">This project explores deep learning-based methods for precise segmentation of coronary vessels in X-ray angiogram images using UNet, CapsuleNet, and GraphUNet models.</p>
+                <p class="description-full" style="display: none;">This project explores deep learning-based methods for precise segmentation of coronary vessels in X-ray angiogram images. By comparing models such as UNet, CapsuleNet, and GraphUNet with advanced preprocessing techniques like CLAHE, the research aims to enhance segmentation accuracy and robustness. The resulting algorithms enable automatic quantification and categorization of coronary artery stenosis to support clinical diagnosis.</p>
+                <button class="read-more-btn" onclick="toggleDescription(this)">Read more</button>
+              </div>
+              <div class="project-tags">
+                <span class="tag">UNet</span>
+                <span class="tag">Medical image analysis</span>
+                <span class="tag">X-ray angiogram</span>
+                <span class="tag">Deep learning</span>
+                <span class="tag">GraphUNet</span>
               </div>
             </div>
           </div>
@@ -533,13 +566,19 @@
         
         <div class="publications-list">
           <!-- miRNA Diagnostic Panel Paper -->
-          <div class="publication-card animate-on-scroll">
-            <div class="publication-image-container">
-              <img src="public/images/paper1.png" alt="miRNA diagnostic panel workflow" class="publication-image">
+          <div class="publication-card first-publication animate-on-scroll">
+            <div class="publication-header">
+              <div class="publication-image-container">
+                <img src="public/images/paper1.png" alt="miRNA diagnostic panel workflow" class="publication-image">
+              </div>
+              <div class="publication-title-container">
+                <div>
+                  <h3 class="publication-title">A diagnostic miRNA panel to detect recurrence of ovarian cancer through artificial intelligence approaches</h3>
+                  <p class="publication-authors"><strong>Reyhaneh Aghayousefi</strong>, Seyed Mahdi Hosseiniyan Khatibi, Sepideh Zununi Vahed, Milad Bastami, Saeed Pirmoradi, Mohammad Teshnehlab</p>
+                </div>
+              </div>
             </div>
             <div class="publication-content">
-              <h3 class="publication-title">A diagnostic miRNA panel to detect recurrence of ovarian cancer through artificial intelligence approaches</h3>
-              <p class="publication-authors">Reyhaneh Aghayousefi, Seyed Mahdi Hosseiniyan Khatibi, Sepideh Zununi Vahed, Milad Bastami, Saeed Pirmoradi, Mohammad Teshnehlab</p>
               <div class="publication-meta">
                 <span class="publication-journal"><i class="fa-solid fa-book"></i> Journal of Cancer Research and Clinical Oncology</span>
                 <span class="publication-year"><i class="fa-solid fa-calendar"></i> 2023</span>
@@ -550,7 +589,7 @@
               </p>
               <div class="publication-actions">
                 <a href="paper-mirna-diagnostic-panel.html" class="publication-link read-paper" onclick="openPaperModal('paper-mirna-diagnostic-panel.html'); return false;">
-                  <i class="fa-solid fa-book-open"></i> Read Paper
+                  <i class="fa-solid fa-book-open"></i> Read more
                 </a>
                 <a href="https://link.springer.com/article/10.1007/s00432-022-04468-2" class="publication-link" target="_blank" rel="noreferrer">
                   <i class="fa-solid fa-external-link-alt"></i> View on Publisher
@@ -558,30 +597,34 @@
                 <button class="publication-link cite-button" onclick="showCitationModal('mirna')">
                   <i class="fa-solid fa-quote-right"></i> Cite
                 </button>
-                <a href="public/citations/aghayousefi2023diagnostic.bib" class="publication-link" download>
-                  <i class="fa-solid fa-download"></i> Download Citation
-                </a>
               </div>
             </div>
           </div>
           
           <!-- Artifact Rejection from EEG Signals Paper -->
-          <div class="publication-card animate-on-scroll">
-            <div class="publication-image-container">
-              <img src="public/images/paper3.png" alt="EEG artifact rejection workflow" class="publication-image">
+          <div class="publication-card first-publication animate-on-scroll">
+            <div class="publication-header">
+              <div class="publication-image-container">
+                <img src="public/images/paper3.png" alt="EEG artifact rejection workflow" class="publication-image">
+              </div>
+              <div class="publication-title-container">
+                <div>
+                  <h3 class="publication-title">Artifact Rejection from EEG Signals–A Tutorial</h3>
+                  <p class="publication-authors"><strong>Reyhaneh Aghayousefi</strong>, Mehdi Delrobaei</p>
+                </div>
+              </div>
             </div>
             <div class="publication-content">
-              <h3 class="publication-title">Artifact Rejection from EEG Signals–A Tutorial</h3>
-              <p class="publication-authors">Reyhaneh Aghayousefi, Mehdi Delrobaei</p>
               <div class="publication-meta">
                 <span class="publication-journal"><i class="fa-solid fa-book"></i> Technical Report</span>
+                <span class="publication-year"><i class="fa-solid fa-calendar"></i> 2020</span>
               </div>
               <p class="publication-abstract">
                 A comprehensive tutorial on methods and techniques for identifying and removing artifacts from EEG signal data to improve analysis accuracy.
               </p>
               <div class="publication-actions">
                 <a href="paper-eeg-artifact-rejection.html" class="publication-link read-paper" onclick="openPaperModal('paper-eeg-artifact-rejection.html'); return false;">
-                  <i class="fa-solid fa-book-open"></i> Read Paper
+                  <i class="fa-solid fa-book-open"></i> Read more
                 </a>
                 <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=aAXtA6AAAAAJ&citation_for_view=aAXtA6AAAAAJ:u-x6o8ySG0sC" class="publication-link" target="_blank" rel="noreferrer">
                   <i class="fa-solid fa-external-link-alt"></i> View Article
@@ -589,31 +632,6 @@
                 <button class="publication-link cite-button" onclick="showCitationModal('eeg')">
                   <i class="fa-solid fa-quote-right"></i> Cite
                 </button>
-                <a href="public/citations/aghayousefiartifact.bib" class="publication-link" download>
-                  <i class="fa-solid fa-download"></i> Download Citation
-                </a>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Coronary Artery Segmentation Paper -->
-          <div class="publication-card animate-on-scroll">
-            <div class="publication-image-container">
-              <img src="public/images/paper2.png" alt="Coronary artery segmentation" class="publication-image">
-            </div>
-            <div class="publication-content">
-              <h3 class="publication-title">Coronary Artery Segmentation Using X-Ray Angiograms</h3>
-              <p class="publication-authors">In Preparation</p>
-              <div class="publication-meta">
-                <span class="publication-status"><i class="fa-solid fa-clock"></i> In Preparation</span>
-              </div>
-              <p class="publication-abstract">
-                This research focuses on developing advanced image processing techniques for accurate segmentation of coronary arteries from X-ray angiogram images.
-              </p>
-              <div class="publication-actions">
-                <span class="publication-link disabled">
-                  <i class="fa-solid fa-hourglass-half"></i> Coming Soon
-                </span>
               </div>
             </div>
           </div>
@@ -1049,6 +1067,27 @@
       });
     }
   });
+  </script>
+
+  <script>
+  /* ===== Project description toggle functionality ===== */
+  function toggleDescription(button) {
+    const projectDescription = button.closest('.project-description');
+    const shortDesc = projectDescription.querySelector('.description-short');
+    const fullDesc = projectDescription.querySelector('.description-full');
+    
+    if (fullDesc.style.display === 'none') {
+      // Show full description
+      shortDesc.style.display = 'none';
+      fullDesc.style.display = 'block';
+      button.textContent = 'Read less';
+    } else {
+      // Show short description
+      shortDesc.style.display = 'block';
+      fullDesc.style.display = 'none';
+      button.textContent = 'Read more';
+    }
+  }
   </script>
 </body>
 </html>

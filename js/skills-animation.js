@@ -4,12 +4,17 @@ document.addEventListener("DOMContentLoaded", () => {
   function createCosmicSkills() {
     const skillsData = [
       { name: "Python", value: 95 },
-      { name: "MATLAB", value: 90 },
-      { name: "C/C#", value: 75 },
-      { name: "JavaScript", value: 65 },
+      { name: "MATLAB", value: 95 },
       { name: "scikit-learn", value: 90 },
-      { name: "PyTorch", value: 85 },
-      { name: "TensorFlow", value: 80 }
+      { name: "PyTorch", value: 90 },
+      { name: "Git", value: 85 },
+      { name: "TensorFlow", value: 80 },
+      { name: "AWS", value: 80 },
+      { name: "Arduino", value: 80 },
+      { name: "C/C#", value: 75 },
+      { name: "Snowflake/SQL", value: 70 },
+      { name: "HPC", value: 70 },
+      { name: "JavaScript", value: 50 }
     ];
 
     // Get the skills container

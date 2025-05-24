@@ -396,7 +396,7 @@
       <h1 class="paper-title">Artifact Rejection from EEG Signals–A Tutorial</h1>
       
       <p class="paper-authors">
-        Reyhaneh Aghayousefi, Mehdi Delrobaei
+        <strong>Reyhaneh Aghayousefi</strong>, Mehdi Delrobaei
       </p>
       
       <p class="paper-journal">
@@ -433,7 +433,7 @@
     
     <div class="paper-abstract">
       <p>
-        <strong>Abstract:</strong> Technologies using electroencephalographic (EEG) signals have been penetrated into public by the development of EEG systems. During EEG system operation, recordings ought to be obtained under no restriction of movement for routine use in the real world. However, the lack of consideration of situational behavior constraints will cause technical/biological artifacts that often mixed with EEG signals and make the signal processing difficult in all respects by ingeniously disguising themselves as EEG components. EEG systems integrating gold standard or specialized device in their processing strategies would appear as daily tools in the future if they are unperturbed to such obstructions. In this tutorial, we describe algorithms for artifact rejection in multi-/single-channel. In particular, some existing single-channel artifact rejection methods that will exhibit beneficial information to improve their performance in on-line applications.
+        <strong>Abstract:</strong> This tutorial provides an overview of the challenges and solutions for artifact rejection in EEG signal processing, focusing on both multi-channel and single-channel scenarios. It summarizes key algorithms, discussing their effectiveness for online EEG systems and highlighting the ongoing need for robust real-time artifact removal.
       </p>
     </div>
     
@@ -441,46 +441,29 @@
       <h2 class="paper-section-title">Overview</h2>
       <div class="paper-section-content">
         <p>
-          This comprehensive tutorial provides methods and techniques for identifying and removing artifacts from EEG signal data to improve analysis accuracy. The tutorial covers both traditional and modern approaches to artifact rejection, with a special focus on practical implementation strategies.
+          Electroencephalography (EEG) has become an essential tool in both clinical and research settings due to its ability to non-invasively record brain activity with high temporal resolution. However, EEG signals are highly susceptible to various artifacts originating from technical and biological sources, such as muscle movements, eye blinks, and environmental interference. These unwanted signals can obscure or distort the neural information of interest, making accurate analysis and interpretation challenging. Effective artifact rejection is therefore critical for enabling reliable applications of EEG in areas such as epilepsy monitoring, brain-computer interfaces, sleep studies, and neurofeedback. This tutorial aims to equip readers with a fundamental understanding of common artifact sources and provides an in-depth discussion of current methods for artifact detection and removal.
         </p>
       </div>
     </div>
     
     <div class="paper-section">
-      <h2 class="paper-section-title">Key Topics Covered</h2>
-      <div class="paper-section-content">
-        <ul>
-          <li>Introduction to EEG artifacts and their sources</li>
-          <li>Traditional artifact rejection methods</li>
-          <li>Multi-channel vs. single-channel approaches</li>
-          <li>Modern machine learning-based techniques</li>
-          <li>Real-time artifact rejection for online applications</li>
-          <li>Performance evaluation metrics</li>
-          <li>Practical implementation considerations</li>
-        </ul>
-      </div>
-    </div>
-    
-    <div class="paper-section">
-      <h2 class="paper-section-title">Applications</h2>
+      <h2 class="paper-section-title">Existing Methods</h2>
       <div class="paper-section-content">
         <p>
-          The methods described in this tutorial are applicable to various EEG-based applications including:
+          A variety of methods have been developed for artifact rejection in EEG signals, each with distinct advantages and limitations depending on the recording context. For multi-channel EEG data, blind source separation algorithms such as Principal Component Analysis (PCA) and Independent Component Analysis (ICA) are widely used to decompose mixed signals into independent components, allowing for the identification and removal of artifactual sources. Additional techniques include regression-based methods, which utilize reference channels to estimate and subtract artifact contributions, and adaptive filtering, which dynamically adjusts filter parameters to isolate the neural signal. For single-channel EEG, where these assumptions are harder to satisfy, approaches such as regression, band-pass and adaptive filtering, ICA-based signal decomposition (with extensions using wavelet transform or empirical mode decomposition), and non-negative matrix factorization (NMF) have been explored. While these methods have achieved varying degrees of success, challenges remain, particularly in real-time applications and in cases where artifact and neural signal characteristics overlap.
         </p>
-        <ul>
-          <li>Brain-Computer Interfaces (BCIs)</li>
-          <li>Clinical EEG monitoring</li>
-          <li>Neurofeedback systems</li>
-          <li>Cognitive research studies</li>
-          <li>Real-time EEG analysis systems</li>
-        </ul>
+      </div>
+    </div>
+    
+    <div class="paper-section">
+      <h2 class="paper-section-title">Conclusion</h2>
+      <div class="paper-section-content">
+        <p>
+          Artifact rejection remains a central challenge in EEG signal processing, especially as the technology becomes more accessible and is applied outside controlled laboratory settings. While multivariate statistical approaches like ICA have proven powerful for multi-channel recordings, their effectiveness diminishes in single-channel or portable EEG systems, where assumptions are often violated. Recent advances, such as supervised NMF and adaptive decomposition techniques, offer promising directions but often come with increased computational costs and complexity. Ultimately, successful artifact rejection requires a careful balance between removing unwanted components and preserving the integrity of the underlying neural signals. Continued research and integration of supervised learning and adaptive algorithms will be essential for realizing robust, real-time EEG systems suitable for routine clinical and everyday use.
+        </p>
       </div>
     </div>
   </div>
-  
-  <footer>
-    &copy; 2025 Reyhaneh Aghayousefi
-  </footer>
   
   <!-- JavaScript -->
   <script src="js/interactive-background.js"></script>
