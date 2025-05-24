@@ -888,6 +888,8 @@ main {
   gap: 1rem;
   flex-wrap: wrap;
   padding-top: 1rem;
+  width: 100%;
+  overflow: hidden;
 }
 
 .interests {
@@ -899,6 +901,8 @@ main {
 .education {
   flex: 1;
   flex-basis: 300px;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .interests h2,
@@ -992,10 +996,16 @@ main {
   font-size: 0.875rem;
   color: #333;
   line-height: 1.5;
+  flex: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: calc(100% - 2.5rem);
 }
 
 .edu-details strong {
   font-weight: 600;
+  display: block;
+  word-wrap: break-word;
 }
 
 /* Projects section */
@@ -2285,12 +2295,8 @@ footer {
     margin: 0 auto;
   }
   
-  .edu-item {
-    padding-left: 3rem;
-  }
-  
   .edu-icon {
-    left: 1rem;
+    left: 15px;
   }
 }
 
