@@ -2285,8 +2285,12 @@ footer {
     margin: 0 auto;
   }
   
+  .edu-item {
+    padding-left: 3rem;
+  }
+  
   .edu-icon {
-    left: 15px;
+    left: 1rem;
   }
 }
 
