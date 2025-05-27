@@ -51,16 +51,48 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Generic text content from the section
-    const fullTextContent = Array.from(section.querySelectorAll("p, span, li, h3, em"))
+    const fullTextContent = Array.from(section.querySelectorAll("p, span, li, h3, h4, h5, h6, em, strong"))
       .map((el) => el.textContent.trim())
       .join(" ")
+
+    // Include the section title in the searchable text
+    const combinedText = `${sectionTitle} ${fullTextContent}`.toLowerCase()
 
     searchableContent.push({
       id: sectionId,
       title: sectionTitle,
-      text: fullTextContent || section.textContent.trim(),
+      text: combinedText,
     })
   })
+
+  // Add specific searchable items for better search results
+  searchableContent.push(
+    {
+      id: "publications",
+      title: "Publications",
+      text: "publications research papers articles miRNA diagnostic panel ovarian cancer AI artificial intelligence EEG artifact rejection signal processing coronary artery segmentation x-ray angiograms"
+    },
+    {
+      id: "projects", 
+      title: "Projects",
+      text: "projects multilingual toxicity detection NLP machine translation human activity visualization pose estimation automatic speech recognition ASR wav2vec2 coronary artery segmentation medical imaging"
+    },
+    {
+      id: "experience",
+      title: "Experience & Skills",
+      text: "experience skills data science specialist VR FleetCare railway software developer teaching machine learning python matlab javascript tensorflow pytorch scikit-learn"
+    },
+    {
+      id: "contact",
+      title: "Contact",
+      text: "contact email message form get in touch reach out communication"
+    },
+    {
+      id: "home",
+      title: "Home & About",
+      text: "home about welcome reyhaneh aghayousefi electrical engineer machine learning data science automation control expertise interests education"
+    }
+  )
 
   function openModal() {
     searchModal.classList.add("show")
@@ -115,7 +147,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const displayedResults = new Set() // To avoid duplicate results
 
     searchableContent.forEach((content) => {
-      if (content.text.toLowerCase().includes(query) && !displayedResults.has(content.id)) {
+      // Check if query matches title or content
+      const titleMatch = content.title.toLowerCase().includes(query)
+      const contentMatch = content.text.includes(query)
+      
+      if ((titleMatch || contentMatch) && !displayedResults.has(content.id)) {
         resultsFound = true
         displayedResults.add(content.id)
 
@@ -124,13 +160,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Create a snippet of text around the first match
         let snippet = content.text
-        const matchIndex = snippet.toLowerCase().indexOf(query)
+        const matchIndex = snippet.indexOf(query)
         if (matchIndex !== -1) {
           const start = Math.max(0, matchIndex - 50) // Show some context before
           const end = Math.min(snippet.length, matchIndex + query.length + 80) // Show some context after
           snippet = (start > 0 ? "..." : "") + snippet.substring(start, end) + (end < snippet.length ? "..." : "")
         } else {
-          snippet = snippet.substring(0, 150) + (snippet.length > 150 ? "..." : "") // Fallback snippet
+          // If no match in content, show beginning of content
+          snippet = snippet.substring(0, 150) + (snippet.length > 150 ? "..." : "")
+        }
+
+        // If title matches, highlight it in the snippet
+        if (titleMatch) {
+          snippet = `Found in section: ${content.title}`
         }
 
         resultDiv.innerHTML = `<h4><a href="#${content.id}" data-page="${content.id}" class="search-result-link">${content.title}</a></h4>

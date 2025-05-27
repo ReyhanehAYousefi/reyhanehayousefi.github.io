@@ -19,12 +19,16 @@
   
   <style>
     .paper-container {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 2rem;
-      background-color: var(--card-bg);
+      position: relative;
+      max-width: 1000px;
+      width: 100%;
+      margin: 0 auto;
+      background-color: transparent;
       border-radius: 1rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+      padding: 2rem;
+      max-height: 90vh;
+      overflow-y: auto;
     }
     
     /* Mobile responsive styles for paper container */
@@ -162,9 +166,10 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1.5rem;
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--border-color);
+      margin: 2rem 0;
+      padding: 1rem;
+      background-color: transparent;
+      border-radius: 0.5rem;
     }
     
     .paper-detail-item {
@@ -210,7 +215,10 @@
     }
     
     .paper-section {
-      margin-bottom: 2rem;
+      margin: 2rem 0;
+      padding: 1rem;
+      background-color: transparent;
+      border-radius: 0.5rem;
     }
     
     .paper-section-title {
@@ -281,19 +289,6 @@
       padding: 2rem;
     }
     
-    .paper-container {
-      position: relative;
-      max-width: 1000px;
-      width: 100%;
-      margin: 0 auto;
-      background-color: var(--card-bg);
-      border-radius: 1rem;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
-      padding: 2rem;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-    
     .paper-image {
       width: 100%;
       height: auto;
@@ -314,14 +309,14 @@
       gap: 1.5rem;
       margin: 2rem 0;
       padding: 1rem;
-      background-color: var(--card-bg);
+      background-color: transparent;
       border-radius: 0.5rem;
     }
     
     .paper-section {
       margin: 2rem 0;
       padding: 1rem;
-      background-color: var(--card-bg);
+      background-color: transparent;
       border-radius: 0.5rem;
     }
     
@@ -348,6 +343,12 @@
     
     .in-iframe .paper-container {
       padding-top: 1rem;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      background-color: transparent;
     }
   </style>
 </head>
