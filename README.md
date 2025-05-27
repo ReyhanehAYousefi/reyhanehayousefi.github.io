@@ -202,14 +202,6 @@ Data Science Specialist | Machine Learning Engineer | Researcher
 
 ---
 
-## 🔄 **Version History**
-
-- **v2.0** (2024) - Complete redesign with modern UI/UX
-- **v1.5** (2023) - Added dark mode and mobile optimization
-- **v1.0** (2022) - Initial website launch
-
----
-
 <div align="center">
 
 **⭐ If you found this website inspiring, please consider giving it a star!**
