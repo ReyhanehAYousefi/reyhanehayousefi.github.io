@@ -360,9 +360,6 @@
     <i class="fa-solid fa-moon moon-icon"></i>
   </button>
   
-  <!-- Custom cursor -->
-  <div class="custom-cursor"></div>
-  
   <!-- Interactive Background -->
   <canvas id="background-canvas" class="background-canvas"></canvas>
   
@@ -421,24 +418,20 @@
 
   <nav class="side-drawer">
     <ul class="drawer-links">
-      <li><a href="index.html#home" data-page="home"><i class="fa-solid fa-house"></i><span>Home</span></a></li>
-      <li><a href="index.html#projects" data-page="projects"><i class="fa-solid fa-diagram-project"></i><span>Projects</span></a></li>
-      <li><a href="index.html#publications" data-page="publications"><i class="fa-solid fa-book"></i><span>Publications</span></a></li>
-      <li><a href="index.html#posts" data-page="posts"><i class="fa-solid fa-note-sticky"></i><span>Posts</span></a></li>
-      <li><a href="index.html#experience" data-page="experience"><i class="fa-solid fa-briefcase"></i><span>Experience</span></a></li>
-      <li><a href="index.html#contact" data-page="contact"><i class="fa-solid fa-envelope"></i><span>Contact</span></a></li>
+      <li><a href="index.html#home"><i class="fa-solid fa-house"></i><span>Home</span></a></li>
+      <li><a href="index.html#projects"><i class="fa-solid fa-diagram-project"></i><span>Projects</span></a></li>
+      <li><a href="index.html#publications"><i class="fa-solid fa-book"></i><span>Publications</span></a></li>
+      <li><a href="index.html#posts"><i class="fa-solid fa-note-sticky"></i><span>Posts</span></a></li>
+      <li><a href="index.html#experience"><i class="fa-solid fa-briefcase"></i><span>Experience</span></a></li>
+      <li><a href="index.html#contact"><i class="fa-solid fa-envelope"></i><span>Contact</span></a></li>
     </ul>
 
     <div class="drawer-social">
-      <a href="https://github.com/ReyhanehAghayousefi" target="_blank" rel="noreferrer"><i class="fa-brands fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/reyhaneh-aghayousefi/" target="_blank" rel="noreferrer"><i class="fa-brands fa-linkedin"></i></a>
-      <a href="https://scholar.google.com/citations?user=aAXtA6AAAAAJ&hl=en" target="_blank" rel="noreferrer"><i class="fa-brands fa-google-scholar"></i></a>
-      <a href="https://www.researchgate.net/profile/Reyhaneh-Aghayousefi" target="_blank" rel="noreferrer"><i class="fa-brands fa-researchgate"></i></a>
-    </div>
-
-    <div class="drawer-legal">
-      <a href="#terms">Terms</a>
-      <a href="#privacy">Privacy</a>
+      <a href="mailto:reyhaneh.aghayousefi@aalto.fi" title="Email"><i class="fa-solid fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/reyhaneh-aghayousefi/" target="_blank" rel="noreferrer" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="https://github.com/ReyhanehAghayousefi" target="_blank" rel="noreferrer" title="GitHub"><i class="fa-brands fa-github"></i></a>
+      <a href="https://scholar.google.com/citations?user=aAXtA6AAAAAJ&hl=en" target="_blank" rel="noreferrer" title="Google Scholar"><i class="fa-brands fa-google-scholar"></i></a>
+      <a href="https://www.researchgate.net/profile/Reyhaneh-Aghayousefi" target="_blank" rel="noreferrer" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
     </div>
   </nav>
   
@@ -537,14 +530,6 @@
     if (window.self !== window.top) {
       document.body.classList.add('in-iframe');
     }
-    
-    /* ===== Custom cursor ===== */
-    const cursor = document.querySelector(".custom-cursor");
-    
-    document.addEventListener("mousemove", (e) => {
-      cursor.style.left = e.clientX + "px";
-      cursor.style.top = e.clientY + "px";
-    });
     
     /* ===== Dark mode functionality ===== */
     const themeToggle = document.getElementById('theme-toggle');

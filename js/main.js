@@ -1,35 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Custom cursor
-  const cursor = document.querySelector(".custom-cursor")
-
-  document.addEventListener("mousemove", (e) => {
-    cursor.style.left = e.clientX + "px"
-    cursor.style.top = e.clientY + "px"
-  })
-
-  // Enlarge cursor on hoverable elements
-  const hoverableElements = document.querySelectorAll(
-    "a, button, .search-icon, .project-card, .timeline-content, .skill-item, .publication-card, .form-control",
-  )
-
-  hoverableElements.forEach((element) => {
-    element.addEventListener("mouseenter", () => {
-      cursor.style.width = "64px"
-      cursor.style.height = "64px"
-      cursor.style.marginLeft = "-32px"
-      cursor.style.marginTop = "-32px"
-      cursor.style.backgroundColor = "rgba(111, 58, 154, 0.4)"
-    })
-
-    element.addEventListener("mouseleave", () => {
-      cursor.style.width = "32px"
-      cursor.style.height = "32px"
-      cursor.style.marginLeft = "-16px"
-      cursor.style.marginTop = "-16px"
-      cursor.style.backgroundColor = "rgba(111, 58, 154, 0.2)"
-    })
-  })
-
   // Page navigation
   const navLinks = document.querySelectorAll(".nav-links a")
   const pages = document.querySelectorAll(".page")

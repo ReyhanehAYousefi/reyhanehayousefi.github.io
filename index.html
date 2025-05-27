@@ -216,9 +216,6 @@
     <i class="fa-solid fa-moon moon-icon"></i>
   </button>
   
-  <!-- Custom cursor -->
-  <div class="custom-cursor"></div>
-  
   <!-- Interactive Background -->
   <canvas id="background-canvas" class="background-canvas"></canvas>
   
@@ -286,15 +283,11 @@
     </ul>
 
     <div class="drawer-social">
-      <a href="https://github.com/ReyhanehAghayousefi" target="_blank" rel="noreferrer"><i class="fa-brands fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/reyhaneh-aghayousefi/" target="_blank" rel="noreferrer"><i class="fa-brands fa-linkedin"></i></a>
-      <a href="https://scholar.google.com/citations?user=aAXtA6AAAAAJ&hl=en" target="_blank" rel="noreferrer"><i class="fa-brands fa-google-scholar"></i></a>
-      <a href="https://www.researchgate.net/profile/Reyhaneh-Aghayousefi" target="_blank" rel="noreferrer"><i class="fa-brands fa-researchgate"></i></a>
-    </div>
-
-    <div class="drawer-legal">
-      <a href="#terms">Terms</a>
-      <a href="#privacy">Privacy</a>
+      <a href="mailto:reyhaneh.aghayousefi@aalto.fi" title="Email"><i class="fa-solid fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/reyhaneh-aghayousefi/" target="_blank" rel="noreferrer" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="https://github.com/ReyhanehAghayousefi" target="_blank" rel="noreferrer" title="GitHub"><i class="fa-brands fa-github"></i></a>
+      <a href="https://scholar.google.com/citations?user=aAXtA6AAAAAJ&hl=en" target="_blank" rel="noreferrer" title="Google Scholar"><i class="fa-brands fa-google-scholar"></i></a>
+      <a href="https://www.researchgate.net/profile/Reyhaneh-Aghayousefi" target="_blank" rel="noreferrer" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
     </div>
   </nav>
   
@@ -970,12 +963,6 @@
     const isMobile = window.innerWidth <= 768;
     modal.style.padding = isMobile ? '1rem' : '2rem';
 
-    // Hide main page cursor
-    const mainCursor = document.querySelector('.custom-cursor');
-    if (mainCursor) {
-      mainCursor.style.display = 'none';
-    }
-
     // Create container for iframe
     const container = document.createElement('div');
     container.style.width = '100%';
@@ -1025,10 +1012,6 @@
     });
     
     closeBtn.onclick = () => {
-      // Show main page cursor again
-      if (mainCursor) {
-        mainCursor.style.display = 'block';
-      }
       document.body.removeChild(modal);
     };
 
@@ -1039,20 +1022,12 @@
 
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
-        // Show main page cursor again
-        if (mainCursor) {
-          mainCursor.style.display = 'block';
-        }
         document.body.removeChild(modal);
       }
     });
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && document.body.contains(modal)) {
-        // Show main page cursor again
-        if (mainCursor) {
-          mainCursor.style.display = 'block';
-        }
         document.body.removeChild(modal);
       }
     });
